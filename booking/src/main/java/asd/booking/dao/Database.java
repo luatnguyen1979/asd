@@ -70,6 +70,7 @@ public class Database {
             tmp = tmp.replaceFirst(replaceKey, o == null ? "NULL" : '\''
                     + o.toString().replace("$", "\\$") + '\'');
         }
+        System.out.println(tmp);
         for (Object o : os) {
             if (o instanceof java.util.Date) {
                 ps.setTimestamp(i++, new Timestamp(((java.util.Date) o).getTime()));
@@ -98,6 +99,7 @@ public class Database {
             tmp = tmp.replaceFirst(replaceKey, o == null ? "NULL" : '\''
                     + o.toString().replace("$", "\\$") + '\'');
         }
+        System.out.println(tmp);
         for (Object o : os) {
             if (o instanceof java.util.Date) {
                 ps.setTimestamp(i++, new Timestamp(((java.util.Date) o).getTime()));
