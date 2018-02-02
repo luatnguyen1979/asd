@@ -1,3 +1,0 @@
-We can make getInstance() a synchronized method by using keyword named synchronized.
-A synchronized method locks the object.It will thus prevent concurrent execution of
-other synchronized methods of the same object.
