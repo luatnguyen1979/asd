@@ -9,14 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import asd.booking.dao.CustomerDAO;
 import asd.booking.dao.PortDAO;
-import asd.booking.domain.Address;
-import asd.booking.domain.Customer;
-import asd.booking.domain.Payment;
-import asd.booking.domain.User;
 import asd.booking.domain.trip.Port;
-import asd.booking.utils.Utils;
 
 /**
  * Servlet implementation class DisplayOptionSearch
@@ -37,7 +31,7 @@ public class BookingSearchOptionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-
+		    System.out.println("test");
 			List<Port> portList = PortDAO.getPortList();
 
 			if (portList != null) {
