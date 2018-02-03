@@ -8,10 +8,7 @@ import asd.booking.discount.passenger.*;
 import asd.booking.domain.trip.Passenger;
 import asd.booking.domain.trip.Route;
 import asd.booking.domain.trip.Trip;
-import asd.booking.utils.Config;
-import asd.booking.utils.DateTimeUtils;
-import asd.booking.utils.PassengerType;
-import asd.booking.utils.TripType;
+import asd.booking.utils.*;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -26,8 +23,8 @@ public class DiscountFacadeImpl {
         Double totalRegularPrice = trip.getPassengerList().size() * regularPrice;
         int groupMinMember = Config.getInt("group_min_member");
         Double groupDiscountAmount = Config.getDouble("group_discount_amount");
-        LocalDate startDate = DateTimeUtils.adaptFromDate(Config.getString("startdate"));
-        LocalDate endDate = DateTimeUtils.adaptFromDate(Config.getString("startdate"));
+        LocalDate startDate = DateUtils.adaptFromDate(Config.getString("startdate"));
+        LocalDate endDate = DateUtils.adaptFromDate(Config.getString("startdate"));
         Double adultPercent = Config.getDouble("adult_percent");
         Double childPercent = Config.getDouble("child_percent");
         Double infantPercent = Config.getDouble("infant_percent");
@@ -69,6 +66,7 @@ public class DiscountFacadeImpl {
             ret = ret - (ret / 100 * PromotionDAO.getPercent(promotionCode));
         }
         if (ret < 0) ret = 0.0;
+        trip.setTotalPrice(ret);
         return ret;
     }
 }

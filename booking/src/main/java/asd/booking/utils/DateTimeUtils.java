@@ -1,45 +1,19 @@
 package asd.booking.utils;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class DateTimeUtils {
 
-    private static final String FORMAT_DATETIME = "yyyy-MM-dd HH:MI:SS";
-    private static final String FORMAT_DATE = "yyyy-MM-d";
+    private static final String FORMAT_DATETIME = "yyyy-MM-dd HH:mm:ss";
 
-    public static String adaptToDate(LocalDate localDate) {
-        StringBuilder ret = new StringBuilder(30);
-        ret.append(localDate.getYear());
-        ret.append("-");
-        if (localDate.getMonthValue() < 10) {
-            ret.append("0");
-            ret.append(localDate.getMonthValue());
-        } else {
-            ret.append(localDate.getMonthValue());
-        }
-        ret.append("-");
-        if (localDate.getDayOfMonth() < 10) {
-            ret.append("0");
-            ret.append(localDate.getDayOfMonth());
-        } else {
-            ret.append(localDate.getDayOfMonth());
-        }
-        return ret.toString();
-    }
-
-    public static String adaptToDateTime(LocalDate localDate) {
+    public static String adaptToDateTime(LocalDateTime localDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMAT_DATETIME);
         return localDate.format(formatter);
     }
 
-    public static LocalDate adaptFromDate(String localDate) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMAT_DATE);
-        return LocalDate.parse(localDate, formatter);
-    }
-
-    public static LocalDate adaptFromDateTime(String localDate) {
+    public static LocalDateTime adaptFromDateTime(String localDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMAT_DATETIME);
-        return LocalDate.parse(localDate, formatter);
+        return LocalDateTime.parse(localDate, formatter);
     }
 }

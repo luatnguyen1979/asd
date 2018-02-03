@@ -1,4 +1,4 @@
-package asd.booking.Prototype;
+package asd.booking.prototype;
 
 import java.io.*;
 

@@ -12,6 +12,7 @@ import asd.booking.domain.Train;
 import asd.booking.domain.trip.Port;
 import asd.booking.domain.trip.Route;
 import asd.booking.utils.DateTimeUtils;
+import asd.booking.utils.DateUtils;
 
 public class RouteDAO {
 
@@ -20,7 +21,7 @@ public class RouteDAO {
     static PreparedStatement ps = null;
 
     public static Route getRoute(int sourcePortId, int destinationPortId, LocalDate departureDate) {
-        String date = DateTimeUtils.adaptToDate(departureDate);
+        String date = DateUtils.adaptToDate(departureDate);
         Route ret = null;
         final String sql = "SELECT * FROM route WHERE sourceport_id = ? " +
                 "AND destinationport_id = ? " +
