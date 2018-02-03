@@ -12,7 +12,7 @@
 </h1>
 <a href="bookingsearchoption">Booking Train</a>
 &nbsp;&nbsp;
-<a href="searching.jsp">Search Train</a>
-&nbsp;&nbsp;
+<!-- <a href="searching.jsp">Search Train</a> -->
+<!-- &nbsp;&nbsp; -->
 <a href="logout">Log out</a>
 <%@include file="footer.jsp"%>
