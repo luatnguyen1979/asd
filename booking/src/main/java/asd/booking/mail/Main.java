@@ -29,6 +29,7 @@ public class Main {
         emailSend.sendOutEmial(cus);
         SendEmailContext emailSendAlert = SendEmailContext.getInstance(alert);
         emailSendAlert.sendOutEmial(cus);
+        
         SendEmailContext emailSendWelcome = SendEmailContext.getInstance(welcome);
         emailSendWelcome.sendOutEmial(cus);
         System.out.println("done");
