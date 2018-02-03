@@ -9,7 +9,7 @@ import asd.booking.domain.trip.Passenger;
 import asd.booking.domain.trip.Route;
 import asd.booking.domain.trip.Trip;
 import asd.booking.utils.Config;
-import asd.booking.utils.DateTimeAdapter;
+import asd.booking.utils.DateTimeUtils;
 import asd.booking.utils.PassengerType;
 import asd.booking.utils.TripType;
 
@@ -26,8 +26,8 @@ public class DiscountFacadeImpl {
         Double totalRegularPrice = trip.getPassengerList().size() * regularPrice;
         int groupMinMember = Config.getInt("group_min_member");
         Double groupDiscountAmount = Config.getDouble("group_discount_amount");
-        LocalDate startDate = DateTimeAdapter.adaptFromDate(Config.getString("startdate"));
-        LocalDate endDate = DateTimeAdapter.adaptFromDate(Config.getString("startdate"));
+        LocalDate startDate = DateTimeUtils.adaptFromDate(Config.getString("startdate"));
+        LocalDate endDate = DateTimeUtils.adaptFromDate(Config.getString("startdate"));
         Double adultPercent = Config.getDouble("adult_percent");
         Double childPercent = Config.getDouble("child_percent");
         Double infantPercent = Config.getDouble("infant_percent");
