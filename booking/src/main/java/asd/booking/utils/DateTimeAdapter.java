@@ -1,10 +1,14 @@
 package asd.booking.utils;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class DateTimeAdapter {
 
-    public static String adapt(LocalDate localDate) {
+    private static final String FORMAT_DATETIME = "yyyy-MM-dd HH:MI:SS";
+    private static final String FORMAT_DATE = "yyyy-MM-d";
+
+    public static String adaptToDate(LocalDate localDate) {
         StringBuilder ret = new StringBuilder(30);
         ret.append(localDate.getYear());
         ret.append("-");
@@ -22,5 +26,20 @@ public class DateTimeAdapter {
             ret.append(localDate.getDayOfMonth());
         }
         return ret.toString();
+    }
+
+    public static String adaptToDateTime(LocalDate localDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMAT_DATETIME);
+        return localDate.format(formatter);
+    }
+
+    public static LocalDate adaptFromDate(String localDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMAT_DATE);
+        return LocalDate.parse(localDate, formatter);
+    }
+
+    public static LocalDate adaptFromDateTime(String localDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMAT_DATETIME);
+        return LocalDate.parse(localDate, formatter);
     }
 }

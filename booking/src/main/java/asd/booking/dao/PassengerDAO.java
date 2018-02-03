@@ -1,8 +1,6 @@
 package asd.booking.dao;
 
 import asd.booking.domain.trip.Passenger;
-import asd.booking.domain.trip.Trip;
-import asd.booking.utils.PassengerType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
