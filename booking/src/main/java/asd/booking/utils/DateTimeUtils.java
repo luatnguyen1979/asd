@@ -3,7 +3,7 @@ package asd.booking.utils;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class DateTimeAdapter {
+public class DateTimeUtils {
 
     private static final String FORMAT_DATETIME = "yyyy-MM-dd HH:MI:SS";
     private static final String FORMAT_DATE = "yyyy-MM-d";
