@@ -1,15 +1,16 @@
 package asd.booking.controller;
 
-import asd.booking.dao.ReportDAO;
-import asd.booking.domain.Report;
+import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.util.List;
+
+import asd.booking.dao.proxy.ReportDaoProxy;
+import asd.booking.domain.Report;
 
 public class ReportServlet extends HttpServlet {
 
@@ -26,7 +27,8 @@ public class ReportServlet extends HttpServlet {
             if (startDate == null || startDate.isEmpty() || endDate == null || endDate.isEmpty()) {
                 resp.sendRedirect("error.jsp");
             }
-            reportList = ReportDAO.getList(startDate, endDate);
+            ReportDaoProxy reportDaoProxy = new ReportDaoProxy(req);
+            reportList = reportDaoProxy.getList(startDate, endDate);
             if (reportList != null && reportList.isEmpty()) {
                 HttpSession session = req.getSession(true);
                 session.setAttribute("reportList", reportList);

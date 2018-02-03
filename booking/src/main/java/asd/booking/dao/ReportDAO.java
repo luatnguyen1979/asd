@@ -1,20 +1,22 @@
 package asd.booking.dao;
 
-import asd.booking.domain.Report;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ReportDAO {
+import asd.booking.dao.proxy.IReportProxy;
+import asd.booking.domain.Report;
+
+public class ReportDAO implements IReportProxy {
 
     static Connection currentCon = null;
     static ResultSet rs = null;
     static PreparedStatement ps = null;
-
-    public static List<Report> getList(String startDate, String enddate) {
+    
+    @Override
+    public List<Report> getList(String startDate, String enddate) {
         List<Report> ret = new LinkedList<>();
         final String sql = "SELECT * FROM report WHERE date >= ? and date < ?";
         try {
