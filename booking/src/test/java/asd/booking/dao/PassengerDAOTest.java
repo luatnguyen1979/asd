@@ -1,10 +1,11 @@
 package asd.booking.dao;
 
+import java.util.List;
+
 import asd.booking.domain.trip.Passenger;
+import asd.booking.utils.PassengerType;
 import junit.framework.Assert;
 import junit.framework.TestCase;
-
-import java.util.List;
 
 public class PassengerDAOTest extends TestCase {
 
