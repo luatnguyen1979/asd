@@ -26,7 +26,7 @@ public class TripDAOTest extends TestCase {
         trip.setRouteId(1);
         trip.setTripWay("1");
         List<Passenger> passengerList = new LinkedList<>();
-        passengerList.add(new Passenger("Eegii", PassengerType.ADULT,500.00, -1));
+        passengerList.add(new Passenger("Eegii", PassengerType.ADULT, 500.00, -1));
         trip.setPassengerList(passengerList);
         TripDAO.insert(trip);
         assertNotNull(trip.getId());

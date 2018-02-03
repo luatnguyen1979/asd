@@ -1,8 +1,5 @@
 package asd.booking.domain.trip;
 
-import asd.booking.domain.Customer;
-
-import java.time.LocalDate;
 import java.util.List;
 
 public class Trip {
