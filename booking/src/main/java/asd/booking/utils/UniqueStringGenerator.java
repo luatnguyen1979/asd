@@ -13,8 +13,4 @@ public class UniqueStringGenerator {
                 .substring(startIndex, len);
         return uuid;
     }
-
-    public static void main(String[] args) {
-        System.out.println(generate(5));
-    }
 }
