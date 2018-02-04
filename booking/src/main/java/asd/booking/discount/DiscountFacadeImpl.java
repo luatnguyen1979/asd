@@ -14,9 +14,9 @@ import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
-public class DiscountFacadeImpl implements IDiscountFacade{
+public class DiscountFacadeImpl implements IDiscountFacade {
 
-	@Override
+    @Override
     public Double getPrice(Trip trip, Route route, String promotionCode) {
         Double ret;
         Double totalDiscount = 0.0;
@@ -25,7 +25,7 @@ public class DiscountFacadeImpl implements IDiscountFacade{
         int groupMinMember = Config.getInt("group_min_member");
         Double groupDiscountAmount = Config.getDouble("group_discount_amount");
         LocalDate startDate = DateUtils.adaptFromDate(Config.getString("startdate"));
-        LocalDate endDate = DateUtils.adaptFromDate(Config.getString("startdate"));
+        LocalDate endDate = DateUtils.adaptFromDate(Config.getString("enddate"));
         Double adultPercent = Config.getDouble("adult_percent");
         Double childPercent = Config.getDouble("child_percent");
         Double infantPercent = Config.getDouble("infant_percent");
@@ -71,7 +71,7 @@ public class DiscountFacadeImpl implements IDiscountFacade{
         return ret;
     }
 
-	@Override
+    @Override
     public Double getPrice(Route route, String passengerType, String tripway) {
         Double regularPrice = tripway.equals(TripType.ROUND.getName()) ? route.getPriceRoundWay() : route.getPriceOneWay();
         Double adultPercent = Config.getDouble("adult_percent");
@@ -80,7 +80,7 @@ public class DiscountFacadeImpl implements IDiscountFacade{
         Double seniorPercent = Config.getDouble("senior_percent");
         Double militaryPercent = Config.getDouble("military_percent");
         LocalDate startDate = DateUtils.adaptFromDate(Config.getString("startdate"));
-        LocalDate endDate = DateUtils.adaptFromDate(Config.getString("startdate"));
+        LocalDate endDate = DateUtils.adaptFromDate(Config.getString("enddate"));
         ICalculation adultICalculation = new CalculationByPercentage(startDate, endDate, adultPercent);
         ICalculation childICalculation = new CalculationByPercentage(startDate, endDate, childPercent);
         ICalculation infantICalculation = new CalculationByPercentage(startDate, endDate, infantPercent);

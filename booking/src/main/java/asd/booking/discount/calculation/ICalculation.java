@@ -13,10 +13,10 @@ public abstract class ICalculation {
     }
 
     public final Double getDiscount(Double regularPrice) {
-        if (bd == null && ed == null) return regularPrice;
+        if (bd == null && ed == null) return 0.0;
         LocalDate now = LocalDate.now();
-        if (bd != null && !bd.isBefore(now)) return regularPrice;
-        if (ed != null && !ed.isAfter(now)) return regularPrice;
+        if (bd != null && !bd.isBefore(now)) return 0.0;
+        if (ed != null && !ed.isAfter(now)) return 0.0;
         Double ret = calculate(regularPrice);
         if (ret < 0) ret = 0.0;
         if (ret > regularPrice) ret = regularPrice;

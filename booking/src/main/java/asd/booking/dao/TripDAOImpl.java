@@ -146,7 +146,7 @@ public class TripDAOImpl implements TripDAO {
 	private void map(Trip trip, ResultSet resultSet) throws SQLException {
 		trip.setId(resultSet.getInt("id"));
 		trip.setTripWay(resultSet.getString("tripway"));
-		trip.setBookedDate(DateTimeUtils.adaptToDateTime(resultSet.getTimestamp("departuredate").toLocalDateTime()));
+		trip.setBookedDate(DateTimeUtils.adaptToDateTime(resultSet.getTimestamp("bookdate").toLocalDateTime()));
 		trip.setCustomerId(resultSet.getInt("customer_id"));
 		trip.setRouteId(resultSet.getInt("route_id"));
 		trip.setConfirmationNumber(resultSet.getString("confirmationnumber"));
