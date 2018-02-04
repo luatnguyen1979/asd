@@ -1,12 +1,13 @@
 package asd.booking.utils;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class DateUtils {
     private static final String FORMAT_DATE = "yyyy-MM-dd";
 
-    public static String adaptToDate(LocalDate localDate) {
+    public static String adaptToDate(LocalDateTime localDate) {
         StringBuilder ret = new StringBuilder(30);
         ret.append(localDate.getYear());
         ret.append("-");
