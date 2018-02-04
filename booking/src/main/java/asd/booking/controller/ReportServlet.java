@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import asd.booking.dao.ReportDAO;
-import asd.booking.dao.UserDAO;
-import asd.booking.dao.factory.DAOFactory;
 import asd.booking.dao.proxy.ReportDaoProxy;
 import asd.booking.domain.Report;
 
@@ -30,15 +27,15 @@ public class ReportServlet extends HttpServlet {
             if (startDate == null || startDate.isEmpty() || endDate == null || endDate.isEmpty()) {
                 resp.sendRedirect("error.jsp");
             }
-            //ReportDaoProxy reportDaoProxy = new ReportDaoProxy(req);
+            ReportDaoProxy reportDaoProxy = new ReportDaoProxy(req);
             //ReportDAO reportProxy = new ReportDAO();
             
-            DAOFactory daoFactory = DAOFactory.getInstance("javabase.jdbc");
-			ReportDAO reportDAO = daoFactory.getReportDAO();
+//            DAOFactory daoFactory = DAOFactory.getInstance("javabase.jdbc");
+//			ReportDAO reportDAO = daoFactory.getReportDAO();
 			
 			
             //reportList = reportProxy.getList(startDate, endDate);
-			reportList = reportDAO.getList(startDate, endDate);
+			reportList = reportDaoProxy.getList(startDate, endDate);
             if (reportList != null && !reportList.isEmpty()) {
                 HttpSession session = req.getSession(true);
                 session.setAttribute("reportlist", reportList);

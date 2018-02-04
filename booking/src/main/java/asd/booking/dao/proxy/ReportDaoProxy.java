@@ -3,18 +3,19 @@
  */
 package asd.booking.dao.proxy;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import asd.booking.dao.ReportDAO;
+import asd.booking.dao.factory.DAOFactory;
 import asd.booking.domain.Report;
 import asd.booking.domain.User;
 
-import java.util.List;
-
 public class ReportDaoProxy implements IReportProxy {
 
-    private IReportProxy reportProxy;
+    private ReportDAO reportDao;
 
     public ReportDaoProxy(HttpServletRequest request) throws Exception {
         if (request == null) {
@@ -25,13 +26,14 @@ public class ReportDaoProxy implements IReportProxy {
         if (user == null) {
             throw new Exception("you have no authorization to get the report!!!");
         } else {
-           // reportProxy = new ReportDAO();
+            DAOFactory daoFactory = DAOFactory.getInstance("javabase.jdbc");
+            reportDao = daoFactory.getReportDAO();
         }
     }
 
     @Override
     public List<Report> getList(String startDate, String enddate) {
-        return reportProxy.getList(startDate, enddate);
+        return reportDao.getList(startDate, enddate);
     }
 
 
