@@ -5,6 +5,7 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class RouteDAOTest extends TestCase {
@@ -15,7 +16,7 @@ public class RouteDAOTest extends TestCase {
     }
 
     public void testGetRoute1() {
-        LocalDate localDate = LocalDate.of(2018, 2, 3);
+        LocalDateTime localDate = LocalDateTime.of(2018, 2, 3, 0, 0, 0);
         Route result = RouteDAO.getRoute(1, 2, localDate);
         Assert.assertNotNull(result);
 

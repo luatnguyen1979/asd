@@ -3,7 +3,6 @@ package asd.booking.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import java.util.List;
 import asd.booking.domain.Train;
 import asd.booking.domain.trip.Port;
 import asd.booking.domain.trip.Route;
-import asd.booking.utils.DateTimeUtils;
 import asd.booking.utils.DateUtils;
 
 public class RouteDAO {
@@ -21,7 +19,7 @@ public class RouteDAO {
     static ResultSet rs = null;
     static PreparedStatement ps = null;
 
-    public static Route getRoute(int sourcePortId, int destinationPortId, LocalDate departureDate) {
+    public static Route getRoute(int sourcePortId, int destinationPortId, LocalDateTime departureDate) {
         String date = DateUtils.adaptToDate(departureDate);
         Route ret = null;
         final String sql = "SELECT * FROM route WHERE sourceport_id = ? " +
