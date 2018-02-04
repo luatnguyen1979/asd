@@ -12,6 +12,7 @@ public class Report  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 2737276322199203030L;
+	private Integer id;
 	private String date;
     private String trainName;
     private int passenger;
@@ -22,8 +23,9 @@ public class Report  implements Serializable {
     public Report() {
     }
 
-    public Report(String date, String trainName, int passenger, String sourceName, String destName, double totalPrice) {
-        this.date = date;
+    public Report(Integer id, String date, String trainName, int passenger, String sourceName, String destName, double totalPrice) {
+        this.id = id;
+    		this.date = date;
         this.trainName = trainName;
         this.passenger = passenger;
         this.sourceName = sourceName;
@@ -89,4 +91,19 @@ public class Report  implements Serializable {
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
+
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+    
 }

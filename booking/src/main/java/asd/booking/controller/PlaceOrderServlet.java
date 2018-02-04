@@ -11,15 +11,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import asd.booking.builder.ReportDirector;
 import asd.booking.controller.observer.EmailObserver;
 import asd.booking.controller.observer.SendingEmailObserver;
 import asd.booking.controller.observer.SubjectOberserver;
 import asd.booking.dao.PassengerDAO;
+import asd.booking.dao.ReportDAO;
 import asd.booking.dao.TripDAO;
 import asd.booking.dao.factory.DAOFactory;
 import asd.booking.discount.DiscountFacadeImpl;
 import asd.booking.discount.IDiscountFacade;
 import asd.booking.domain.Customer;
+import asd.booking.domain.Report;
 import asd.booking.domain.User;
 import asd.booking.domain.trip.Passenger;
 import asd.booking.domain.trip.Route;
@@ -87,14 +90,12 @@ public class PlaceOrderServlet extends HttpServlet {
         observer.setEmailContext(emailSendWelcome);
         subjectObserver.attacheObserver(observer);
         subjectObserver.notifiedObserver(cust);
-
-		session.removeAttribute("discountrate");
-		session.removeAttribute("passengerlist");
-		session.removeAttribute("reportList");
-		session.removeAttribute("portList");
-		session.removeAttribute("numberpassenger");
-		session.removeAttribute("tripway");
-
+        
+        Report report = new Report();
+        ReportDirector rd = new ReportDirector(report, trip, route);
+        rd.constructReport();
+        ReportDAO reportDAO = daoFactory.getReportDAO();
+        reportDAO.insert(report);
 		session.setAttribute("discountrate", null);
 		session.setAttribute("passengerlist", null);
 		session.setAttribute("reportList", null);

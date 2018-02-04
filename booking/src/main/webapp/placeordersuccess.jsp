@@ -11,7 +11,7 @@
 </h2>
 <a href="bookingsearchoption">Booking Train</a>
 &nbsp;&nbsp;
-<a href="userlogged">Home</a>
+<a href="userlogged.jsp">Home</a>
 &nbsp;&nbsp;
 <a href="logout">Log out</a>
 <%@include file="footer.jsp"%>

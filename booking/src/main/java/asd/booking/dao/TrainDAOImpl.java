@@ -62,6 +62,7 @@ public class TrainDAOImpl implements TrainDAO {
 	 */
 	private void map(Train train, ResultSet resultSet) throws SQLException {
 		train.setTrainId(resultSet.getInt("trainid"));
+		train.setName(resultSet.getString("name"));
 		train.setModel(resultSet.getString("model"));
 		train.setMadeBy(resultSet.getString("madeby"));
 		train.setType(resultSet.getString("type"));

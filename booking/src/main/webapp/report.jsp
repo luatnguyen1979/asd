@@ -6,12 +6,6 @@
 ArrayList<Report> reportList = (ArrayList<Report>) session.getAttribute("reportlist");
 
 %>
-private String date;
-    private String trainName;
-    private int passenger;
-    private String sourceName;
-    private String destName;
-    private double totalPrice;
 
 <h2>Passenger List</h2>
 <form id="passengerlist" action="confirmcheckingout" method="POST">

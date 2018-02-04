@@ -17,6 +17,7 @@ import asd.booking.dao.factory.exeption.DAOException;
 import asd.booking.domain.Report;
 import asd.booking.domain.trip.Port;
 import asd.booking.domain.trip.Route;
+import asd.booking.domain.trip.Trip;
 
 /**
  * @author luatnguyen
@@ -24,7 +25,7 @@ import asd.booking.domain.trip.Route;
  */
 public class ReportDAOImpl implements ReportDAO {
 	private DAOFactory daoFactory;
-	//static final String SQL_FIND_BY_DATE = "SELECT * FROM report WHERE date >= ? and date < ?";
+	private static final String SQL_INSERT = "INSERT INTO report (date, passenger, sourceport, destport, totalprice, trainname) VALUES (?, ?, ?, ?, ?, ?)";
 	static final String SQL_FIND_BY_DATE = "SELECT * FROM report";
 	/**
 	 * Construct an User DAO for the given DAOFactory. Package private so that it
@@ -36,6 +37,37 @@ public class ReportDAOImpl implements ReportDAO {
 	public ReportDAOImpl(DAOFactory daoFactory) {
 		this.daoFactory = daoFactory;
 	}
+	
+	/* (non-Javadoc)
+	 * @see asd.booking.dao.TripDAO#insert(asd.booking.domain.trip.Trip)
+	 */
+	@Override
+	public void insert(Report report) {
+		if (report.getId() != null) {
+			throw new IllegalArgumentException("Trip is already created, the Report ID is not null.");
+		}
+
+		Object[] values = { report.getDate(), report.getPassenger(), report.getSourceName(), report.getDestName(), new Double(report.getTotalPrice()), report.getTrainName() };
+		
+		try (Connection connection = daoFactory.getConnection();
+				PreparedStatement statement = prepareStatement(connection, SQL_INSERT, true, values);) {
+			int affectedRows = statement.executeUpdate();
+			if (affectedRows == 0) {
+				throw new DAOException("Creating Report failed, no rows affected.");
+			}
+
+			try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+				if (generatedKeys.next()) {
+					report.setId(generatedKeys.getInt(1));
+				} else {
+					throw new DAOException("Creating Report failed, no generated key obtained.");
+				}
+			}
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+	}
+	
 	@Override
 	public List<Report> getList(String startDate, String endDate) {
 		List<Report> reports = new ArrayList<Report>();
