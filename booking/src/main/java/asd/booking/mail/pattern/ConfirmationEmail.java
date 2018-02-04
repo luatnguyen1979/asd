@@ -7,6 +7,26 @@ import asd.booking.domain.Customer;
 
 public class ConfirmationEmail extends SendingEmailTemplateMethod implements EmailStrategy {
 
+    private String confirmationNumber;
+    
+    
+    public String getConfirmationNumber() {
+        return confirmationNumber;
+    }
+
+    
+    public void setConfirmationNumber(String confirmationNumber) {
+        this.confirmationNumber = confirmationNumber;
+    }
+    
+    public ConfirmationEmail() {
+        super();
+    }
+    
+    public ConfirmationEmail(String confirmationNumber) {
+        this.confirmationNumber = confirmationNumber;
+    }
+
     @Override
     public void sendEmail(Customer customer) {
         sendEmailToClient(customer);
@@ -32,6 +52,7 @@ public class ConfirmationEmail extends SendingEmailTemplateMethod implements Ema
         StringBuilder bodyBuilder = new StringBuilder();
         bodyBuilder.append("Hello " + customer.getFirstName()).append("\n");
         bodyBuilder.append("This is to confirm you that you have booked the ticket").append("\n");
+        bodyBuilder.append("Your reservation number is : " + getConfirmationNumber() + "\n");
         bodyBuilder.append("Thanks our value customer");
         return bodyBuilder.toString();
     }
