@@ -43,7 +43,7 @@ public class ReportServlet extends HttpServlet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            resp.sendRedirect("report.jsp"); // logged-in page
+            resp.sendRedirect("errorreport.jsp"); // logged-in page
         }
     }
 
