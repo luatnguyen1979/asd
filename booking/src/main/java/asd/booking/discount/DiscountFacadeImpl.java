@@ -69,4 +69,39 @@ public class DiscountFacadeImpl {
         trip.setTotalPrice(ret);
         return ret;
     }
+
+    public Double getPrice(Route route, String passengerType, String tripway) {
+        Double regularPrice = tripway.equals(TripType.ROUND.getName()) ? route.getPriceRoundWay() : route.getPriceOneWay();
+        Double adultPercent = Config.getDouble("adult_percent");
+        Double childPercent = Config.getDouble("child_percent");
+        Double infantPercent = Config.getDouble("infant_percent");
+        Double seniorPercent = Config.getDouble("senior_percent");
+        Double militaryPercent = Config.getDouble("military_percent");
+        LocalDate startDate = DateUtils.adaptFromDate(Config.getString("startdate"));
+        LocalDate endDate = DateUtils.adaptFromDate(Config.getString("startdate"));
+        ICalculation adultICalculation = new CalculationByPercentage(startDate, endDate, adultPercent);
+        ICalculation childICalculation = new CalculationByPercentage(startDate, endDate, childPercent);
+        ICalculation infantICalculation = new CalculationByPercentage(startDate, endDate, infantPercent);
+        ICalculation seniorICalculation = new CalculationByPercentage(startDate, endDate, seniorPercent);
+        ICalculation militaryCalculation = new CalculationByPercentage(startDate, endDate, militaryPercent);
+        Double discount = 0.0;
+        switch (passengerType) {
+            case PassengerType.ADULT:
+                discount = adultICalculation.getDiscount(regularPrice);
+                break;
+            case PassengerType.CHILD:
+                discount = childICalculation.getDiscount(regularPrice);
+                break;
+            case PassengerType.INFANT:
+                discount = infantICalculation.getDiscount(regularPrice);
+                break;
+            case PassengerType.SENIOR:
+                discount = seniorICalculation.getDiscount(regularPrice);
+                break;
+            case PassengerType.MILITARY:
+                discount = militaryCalculation.getDiscount(regularPrice);
+                break;
+        }
+        return regularPrice - discount;
+    }
 }
