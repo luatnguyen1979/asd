@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `booking` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `booking`;
--- MySQL dump 10.13  Distrib 5.7.21, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
 -- Host: localhost    Database: booking
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.29-MariaDB
+-- Server version   5.7.19
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -81,6 +81,34 @@ INSERT INTO `customer` VALUES (1,'LUAT','NGUYEN','8484669338','LUATNGUYEN@GMAIL.
 UNLOCK TABLES;
 
 --
+-- Table structure for table `demouser`
+--
+
+DROP TABLE IF EXISTS `demouser`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `demouser` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `firstname` varchar(45) DEFAULT NULL,
+  `lastname` varchar(45) DEFAULT NULL,
+  `birthdate` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `demouser`
+--
+
+LOCK TABLES `demouser` WRITE;
+/*!40000 ALTER TABLE `demouser` DISABLE KEYS */;
+/*!40000 ALTER TABLE `demouser` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `passenger`
 --
 
@@ -91,12 +119,12 @@ CREATE TABLE `passenger` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fullname` varchar(50) DEFAULT NULL,
   `type` varchar(10) NOT NULL,
-  `trip_id` int(11) NOT NULL,
+  `trip_id` int(11) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_passenger_1_idx` (`trip_id`),
-  CONSTRAINT `fk_passenger_1` FOREIGN KEY (`trip_id`) REFERENCES `trip` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+  KEY `fk_passenger_trip_idx` (`trip_id`),
+  CONSTRAINT `fk_passenger_trip` FOREIGN KEY (`trip_id`) REFERENCES `passenger` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,7 +133,7 @@ CREATE TABLE `passenger` (
 
 LOCK TABLES `passenger` WRITE;
 /*!40000 ALTER TABLE `passenger` DISABLE KEYS */;
-INSERT INTO `passenger` VALUES (1,'Adult','Adult',1,NULL),(2,'Passenger with Disability (PWD)','Adult',1,NULL),(3,'Companion (Book with PWD)','Adult',1,NULL),(4,'Kimtey Chav','Adult',1,NULL),(5,'Luat Nguyen','Adult',1,NULL),(6,'Enkh Enkh','Adult',1,NULL),(7,'Tam Nguyen','Adult',1,NULL),(8,'Dat Doan','Senior',1,NULL),(9,'Vu Le','Senior',1,NULL),(10,'Dan Cao','Senior',1,NULL),(11,'Tam Huynh','Military',1,NULL),(12,'Nam Ngo','Military',1,NULL),(13,'Vu Ngo','Senior',1,NULL),(14,'Tin Nguyen','Senior',1,NULL),(15,'Trung Nguyen','Child',1,NULL),(16,'Dung Dinh','Child',1,NULL),(17,'Han Nguyen','Infant',1,NULL),(18,'Mi Tran','Child',1,NULL),(19,'Quoc Nguyen','Infant',1,NULL);
+INSERT INTO `passenger` VALUES (1,'Adult','Adult',NULL,NULL),(2,'Passenger with Disability (PWD)','Adult',NULL,NULL),(3,'Companion (Book with PWD)','Adult',NULL,NULL),(4,'Kimtey Chav','Adult',NULL,NULL),(5,'Luat Nguyen','Adult',1,NULL),(6,'Enkh Enkh','Adult',1,NULL),(7,'Tam Nguyen','Adult',1,NULL),(8,'Dat Doan','Senior',1,NULL),(9,'Vu Le','Senior',1,NULL),(10,'Dan Cao','Senior',NULL,NULL),(11,'Tam Huynh','Military',NULL,NULL),(12,'Nam Ngo','Military',NULL,NULL),(13,'Vu Ngo','Senior',NULL,NULL),(14,'Tin Nguyen','Senior',NULL,NULL),(15,'Trung Nguyen','Child',NULL,NULL),(16,'Dung Dinh','Child',NULL,NULL),(17,'Han Nguyen','Infant',NULL,NULL),(18,'Mi Tran','Child',NULL,NULL),(19,'Quoc Nguyen','Infant',NULL,NULL),(20,'Luat Nguyen1','adult',4,31.00),(21,'Jenny Nguyen1','child',4,31.00),(22,'Luat Nguyen 2','adult',5,31.00),(23,'Jenny Nguyen 2','child',5,31.00),(24,'Luat Nguyen 3','adult',6,31.00),(25,'Jenny Nguyen 3','child',6,31.00),(26,'Luat Nguyen 5','Adult',7,0.00),(27,'Jenny Nguyen 5','Child',7,0.00),(28,'Luat Nguyen 6','sdult',8,31.00),(29,'Jenny Nguyen 6','child',8,31.00),(30,'Luat nguyen 7','sdult',9,31.00),(31,'Jenny Nguyen 7','child',9,31.00);
 /*!40000 ALTER TABLE `passenger` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -273,12 +301,12 @@ DROP TABLE IF EXISTS `trip`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `trip` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `tripway` varchar(20) NOT NULL,
-  `bookdate` datetime NOT NULL,
-  `route_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  `confimationnumber` varchar(45) DEFAULT NULL,
+  `bookDate` datetime NOT NULL,
+  `route_id` int(11) DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `confirmationnumber` varchar(45) DEFAULT NULL,
   `totalprice` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `trip_id_uindex` (`id`),
@@ -286,7 +314,7 @@ CREATE TABLE `trip` (
   KEY `fk_trip_customer` (`customer_id`),
   CONSTRAINT `fk_route_route` FOREIGN KEY (`route_id`) REFERENCES `route` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_trip_customer` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customerid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -295,7 +323,7 @@ CREATE TABLE `trip` (
 
 LOCK TABLES `trip` WRITE;
 /*!40000 ALTER TABLE `trip` DISABLE KEYS */;
-INSERT INTO `trip` VALUES (1,'singleway','2018-02-03 19:15:03',1,1,'ABC123',150.00);
+INSERT INTO `trip` VALUES (1,'oneway','2018-02-01 00:00:00',1,1,'F8544DE659',100.00),(2,'oneway','2018-02-01 00:00:00',1,1,'88FE0EE2A9',100.00),(3,'oneway','2018-02-01 00:00:00',1,1,'832D598051',100.00),(4,'oneway','2018-02-04 03:29:42',NULL,1,'AB5FDB18A5',NULL),(5,'oneway','2018-02-04 03:44:07',1,1,'71D08BEF9C',NULL),(6,'oneway','2018-02-04 03:57:34',1,1,'2E37650937',62.00),(7,'oneway','2018-02-04 04:10:45',1,1,'17983D35BB',0.00),(8,'oneway','2018-02-04 04:12:13',1,1,'5B2F9E3EEF',61.94),(9,'oneway','2018-02-04 04:34:06',1,1,'8E2E94433C',61.94);
 /*!40000 ALTER TABLE `trip` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,4 +365,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-03 19:19:32
+-- Dump completed on 2018-02-04 11:07:07
