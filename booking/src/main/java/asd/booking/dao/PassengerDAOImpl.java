@@ -63,6 +63,7 @@ public class PassengerDAOImpl implements PassengerDAO {
 					throw new DAOException("Creating Passenger failed, no generated key obtained.");
 				}
 			}
+			daoFactory.free(connection);
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
@@ -80,6 +81,7 @@ public class PassengerDAOImpl implements PassengerDAO {
 				map(passenger, resultSet);
 				passengers.add(passenger);
 			}
+			daoFactory.free(connection);
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
@@ -99,6 +101,7 @@ public class PassengerDAOImpl implements PassengerDAO {
 			while (resultSet.next()) {
 				returnVal = resultSet.getInt(1);
 			}
+			daoFactory.free(connection);
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}

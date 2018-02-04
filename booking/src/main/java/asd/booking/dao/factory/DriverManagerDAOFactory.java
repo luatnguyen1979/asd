@@ -152,6 +152,7 @@ public class DriverManagerDAOFactory extends DAOFactory implements Runnable {
 	/**
 	 * Method to free the Connections
 	 */
+	@Override
 	public synchronized void free(Connection connection) {
 		busyConnections.removeElement(connection);
 		availableConnections.addElement(connection);

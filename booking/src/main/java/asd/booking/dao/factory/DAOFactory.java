@@ -162,6 +162,9 @@ public abstract class DAOFactory {
 	 *             If acquiring the connection fails.
 	 */
 	public abstract Connection getConnection() throws SQLException;
+	
+	public abstract void free(Connection connection);
+	
 
 	// DAO implementation getters
 	// -----------------------------------------------------------------
