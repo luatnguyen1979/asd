@@ -17,7 +17,7 @@ import java.util.Vector;
 public class DriverManagerDAOFactory extends DAOFactory implements Runnable {
 
 	private String url, username, password;
-	private final int maxConnections = 20;
+	private final int maxConnections = 1;
 	private final boolean waitIfBusy = false;
 	public Vector<Connection> availableConnections, busyConnections;
 	private boolean connectionPending = false;
