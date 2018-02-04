@@ -1,5 +1,5 @@
 <%@include file="header.jsp"%>
-<h1>New customer registration</h1>
+<h2>New customer registration</h2>
 <form action="registercustomer" method="POST">
 	<table>
 		<tr>

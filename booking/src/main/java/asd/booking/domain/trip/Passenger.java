@@ -1,25 +1,33 @@
 package asd.booking.domain.trip;
 
-public class Passenger {
+import java.io.Serializable;
 
+public class Passenger  implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3216847440630782984L;
 	private Integer id;
 	private String fullname;
 	private String passengerType;
-	private int tripId;
-	private double price;
+	private Integer tripId;
+	private Double price;
 
-	public Passenger(String fullname, String passengerType, double price, int tripId) {
-		this.fullname = fullname;
-		this.passengerType = passengerType;
-		this.tripId = tripId;
-		this.price = price;
+	
+	/**
+	 * 
+	 */
+	public Passenger() {
+
 	}
 
-	public Passenger(Integer id, String fullname, String passengerType, int tripId) {
+	public Passenger(Integer id, String fullname, String passengerType, Integer tripId, Double price) {
 		this.id = id;
 		this.fullname = fullname;
 		this.passengerType = passengerType;
 		this.tripId = tripId;
+		this.price = price;
 	}
 
 	public Integer getId() {
@@ -49,7 +57,7 @@ public class Passenger {
 	/**
 	 * @return the tripId
 	 */
-	public int getTripId() {
+	public Integer getTripId() {
 		return tripId;
 	}
 
@@ -57,14 +65,14 @@ public class Passenger {
 	 * @param tripId
 	 *            the tripId to set
 	 */
-	public void setTripId(int tripId) {
+	public void setTripId(Integer tripId) {
 		this.tripId = tripId;
 	}
 
 	/**
 	 * @return the price
 	 */
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
@@ -72,7 +80,7 @@ public class Passenger {
 	 * @param price
 	 *            the price to set
 	 */
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 

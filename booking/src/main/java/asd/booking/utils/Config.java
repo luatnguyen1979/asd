@@ -27,7 +27,8 @@ public class Config {
             File configDir = new File(System.getProperty("catalina.base"), "conf");
             File configFile = new File(configDir, "myconfig.properties");
             filePath = configFile.getAbsolutePath();
-            InputStream stream = new FileInputStream(configFile);
+//            filePath = "/Users/luatnguyen/Desktop/ASD/bookingframework/booking/src/main/resources/conf/myconfig.properties";
+            InputStream stream = new FileInputStream(filePath);
             properties = new Properties();
             properties.load(stream);
         } catch (Exception e) {

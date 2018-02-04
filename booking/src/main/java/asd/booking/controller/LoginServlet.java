@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 			User user = new User();
 			user.setUserName(request.getParameter("un"));
 			user.setPassword(request.getParameter("pw"));
-			
+
 			DAOFactory daoFactory = DAOFactory.getInstance("javabase.jdbc");
 			UserDAO userDAO = daoFactory.getUserDAO();
 			userDAO.login(user);
@@ -49,11 +49,14 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession(true);
 				session.setAttribute("currentSessionUser", user);
 				session.setAttribute("currentSessionCustomer", cust);
-				response.sendRedirect("userLogged.jsp"); // logged-in page
+				session.setAttribute("isLogged", "true");
+
+				response.sendRedirect("userlogged.jsp"); // logged-in page
+
 			}
 
 			else
-				response.sendRedirect("invalidLogin.jsp"); // error page
+				response.sendRedirect("invalidlogin.jsp"); // error page
 		}
 
 		catch (Throwable theException) {
@@ -61,4 +64,4 @@ public class LoginServlet extends HttpServlet {
 			System.out.println(theException);
 		}
 	}
-}	
+}

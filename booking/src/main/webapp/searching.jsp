@@ -1,5 +1,5 @@
 <%@include file="header.jsp"%>
-<h1>See Where the Train Can Take You</h1>
+<h2>See Where the Train Can Take You</h2>
 <form action="searchschedule" method="POST">
 	<table width="1024px" >
 		<tr>

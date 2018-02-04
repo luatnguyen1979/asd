@@ -17,21 +17,23 @@ import asd.booking.domain.trip.Route;
 /**
  * Servlet implementation class SearchSchedule
  */
-public class SearchSchedule extends HttpServlet {
+public class SearchScheduleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SearchSchedule() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public SearchScheduleServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try {
 
 			String tripWay = request.getParameter("trip");
@@ -48,20 +50,20 @@ public class SearchSchedule extends HttpServlet {
 				sourcePortId = Integer.parseInt(fromPort);
 				destinationPortId = Integer.parseInt(toPort);
 			} catch (NumberFormatException nfe) {
-				
+
 			}
 			HttpSession session = request.getSession(true);
 			session.setAttribute("numberpassenger", new Integer(numberPassenger));
 			session.setAttribute("tripway", tripWay);
-			List<Route> routeList = (List<Route>)request.getSession().getAttribute("routelist");
+			List<Route> routeList = (List<Route>) request.getSession().getAttribute("routelist");
 			if (routeList == null)
 				routeList = RouteDAO.getRoute(sourcePortId, destinationPortId, departDate);
 
 			if (routeList != null) {
 				String json = new Gson().toJson(routeList);
 				response.setContentType("application/json");
-			    response.setCharacterEncoding("UTF-8");
-			    response.getWriter().write(json);
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write(json);
 			}
 
 			else
@@ -71,13 +73,15 @@ public class SearchSchedule extends HttpServlet {
 		catch (Throwable theException) {
 			System.out.println(theException);
 		}
-		
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		doGet(request, response);
 	}

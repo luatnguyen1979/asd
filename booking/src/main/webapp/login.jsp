@@ -1,5 +1,5 @@
 <%@include file="header.jsp"%>
-<h1>Login to Train Booking System</h1>
+<h2>Login to Train Booking System</h2>
 <form action="login">
 	<table>
 		<tr>

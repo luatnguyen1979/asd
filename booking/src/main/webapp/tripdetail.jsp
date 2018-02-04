@@ -1,8 +1,8 @@
 <%@include file="header.jsp"%>
-<%@ page import="asd.booking.domain.trip.Route,asd.booking.domain.trip.Passenger,java.util.List,java.util.ArrayList,java.time.LocalDateTime,asd.booking.utils.DateTimeUtils"%>
+<%@ page import="asd.booking.domain.trip.Trip,asd.booking.domain.trip.Route,asd.booking.domain.trip.Passenger,java.util.List,java.util.ArrayList,java.time.LocalDateTime,asd.booking.utils.DateTimeUtils"%>
 <%
-
-Route route = (Route) session.getAttribute("route");
+Trip trip = (Trip) session.getAttribute("currenttrip");
+Route route = null;
 List<Passenger> passengerList = (ArrayList<Passenger>) session.getAttribute("passengerlist");
 Integer numberPassenger = (Integer) session.getAttribute("numberpassenger");
 System.out.println(passengerList.size());

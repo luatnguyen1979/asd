@@ -19,8 +19,8 @@ function searchRoute() {
 	var $table = $("<table width=1024px border=1>").appendTo($("#continue"));
 
 	$("<tr>").appendTo($table).append(
-			$("<td colspan=\"9\" align=center class=\"section\">").text(
-					"List of available trains:"));
+			$("<td colspan=\"9\" class=\"section\">").text(
+					"List Of Available Trains:"));
 	$("<tr class=\"tableheader\">").appendTo($table).append(
 			$("<td>").text("No")).append($("<td>").text("Train")).append(
 			$("<td>").text("Class")).append($("<td>").text("From")).append(
@@ -69,9 +69,9 @@ function searchRoute() {
 										"<input align=center type=\"radio\" name=\"selection\" value=\""
 												+ routes[i].id + "\">"));
 			}
-			$("<br/>").appendTo($("#continue"));
-			$("<input type='submit' value='Continue' onclick='veriryContinuingBook();return false;'/>")
-					.appendTo($("#continue"));
+			//$("<br/>").appendTo($("#continue"));
+			$("<tr>").appendTo($table).append($("<td colspan=9 align=right class=bottomBorderLess>").html("<input type='submit' value='Continue' onclick='veriryContinuingBook();return false;'/>"));
+					
 		},
 
 		error : function(errorObject) {

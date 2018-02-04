@@ -14,8 +14,9 @@ import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
-public class DiscountFacadeImpl {
+public class DiscountFacadeImpl implements IDiscountFacade{
 
+	@Override
     public Double getPrice(Trip trip, Route route, String promotionCode) {
         Double ret;
         Double totalDiscount = 0.0;
@@ -70,6 +71,7 @@ public class DiscountFacadeImpl {
         return ret;
     }
 
+	@Override
     public Double getPrice(Route route, String passengerType, String tripway) {
         Double regularPrice = tripway.equals(TripType.ROUND.getName()) ? route.getPriceRoundWay() : route.getPriceOneWay();
         Double adultPercent = Config.getDouble("adult_percent");

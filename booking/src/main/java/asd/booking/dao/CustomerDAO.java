@@ -71,6 +71,7 @@ public class CustomerDAO {
 	        try (ResultSet generatedKeys = prestmt.getGeneratedKeys()) {
 	            if (generatedKeys.next()) {
 	                custId = generatedKeys.getInt(1);
+	                cust.setCustomerId(custId);
 	            }
 	            else {
 	                throw new SQLException("Creating Customer failed, no ID obtained.");
@@ -256,6 +257,7 @@ public class CustomerDAO {
 
 			// if user exists set the isValid variable to true
 			else if (more) {
+				Integer customerId = rs.getInt("customerid");
 				String username = rs.getString("username");
 				String password = rs.getString("password");
 				String firstName = rs.getString("firstname");
@@ -286,7 +288,7 @@ public class CustomerDAO {
 				Address paymentAddress = new Address(payment_street1, payment_street2, payment_city, payment_zipcode, payment_state);
 				
 				payment.setBillingAddress(paymentAddress);
-				cust = new Customer(firstName, lastName, telephone, email, new User(username, password));
+				cust = new Customer(customerId, firstName, lastName, telephone, email, new User(username, password));
 				cust.setAddress(address);
 				cust.setPayment(payment);
 				System.out.println("Welcome " + firstName);

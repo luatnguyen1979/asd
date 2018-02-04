@@ -1,23 +1,28 @@
 package asd.booking.domain.trip;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Trip {
+public class Trip  implements Serializable {
 
-    private int id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8719408106341000425L;
+	private Integer id;
     private String tripWay;
     private List<Passenger> passengerList;
     private String bookedDate;
-    private int customerId;
-    private int routeId;
+    private Integer customerId;
+    private Integer routeId;
     private String confirmationNumber;
     private Double totalPrice;
 
     public Trip() {
     }
 
-    public Trip(int id, String tripWay, List<Passenger> passengerList, String bookedDate, int customerId,
-                int routeId, String confirmationNumber) {
+    public Trip(Integer id, String tripWay, List<Passenger> passengerList, String bookedDate, Integer customerId,
+                Integer routeId, String confirmationNumber) {
         this.id = id;
         this.tripWay = tripWay;
         this.passengerList = passengerList;
@@ -27,7 +32,7 @@ public class Trip {
         this.confirmationNumber = confirmationNumber;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -70,28 +75,28 @@ public class Trip {
     /**
 	 * @return the customerId
 	 */
-	public int getCustomerId() {
+	public Integer getCustomerId() {
 		return customerId;
 	}
 
 	/**
 	 * @param customerId the customerId to set
 	 */
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
 	}
 
 	/**
 	 * @return the routeId
 	 */
-	public int getRouteId() {
+	public Integer getRouteId() {
 		return routeId;
 	}
 
 	/**
 	 * @param routeId the routeId to set
 	 */
-	public void setRouteId(int routeId) {
+	public void setRouteId(Integer routeId) {
 		this.routeId = routeId;
 	}
 

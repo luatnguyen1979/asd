@@ -3,9 +3,15 @@
  */
 package asd.booking.domain;
 
-public class Train {
+import java.io.Serializable;
 
-    private String name;
+public class Train  implements Serializable  {
+
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6066395442162732450L;
+	private String name;
     private String type;
     private String model;
     private String madeBy;

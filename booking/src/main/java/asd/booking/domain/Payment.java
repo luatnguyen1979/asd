@@ -3,13 +3,19 @@
  */
 package asd.booking.domain;
 
+import java.io.Serializable;
+
 import asd.booking.utils.CardType;
 
 /**
  * @author luatnguyen
  *
  */
-public class Payment {
+public class Payment  implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7398548737104741301L;
 	private CardType cartType;
 	private String holderName;
 	private String cardNumber;

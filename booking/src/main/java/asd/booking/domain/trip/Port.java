@@ -1,10 +1,16 @@
 package asd.booking.domain.trip;
 
+import java.io.Serializable;
+
 import asd.booking.domain.Address;
 
-public class Port {
+public class Port  implements Serializable {
 
-    private final int id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5542261791752180542L;
+	private final int id;
     private final String name;
     private final Address address;
 

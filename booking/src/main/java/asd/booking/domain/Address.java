@@ -3,11 +3,18 @@
  */
 package asd.booking.domain;
 
+import java.io.Serializable;
+
 /**
  * @author luatnguyen
  */
-public class Address {
-    private String street1;
+public class Address implements Serializable {
+
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8268650781163822819L;
+	private String street1;
     private String street2;
     private String city;
     private String zipCode;

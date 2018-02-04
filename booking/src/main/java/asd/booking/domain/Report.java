@@ -2,12 +2,17 @@ package asd.booking.domain;
 
 import asd.booking.domain.trip.Trip;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Report {
+public class Report  implements Serializable {
 
-    private String date;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2737276322199203030L;
+	private String date;
     private String trainName;
     private int passenger;
     private String sourceName;

@@ -1,12 +1,11 @@
 package asd.booking.dao;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import asd.booking.domain.trip.Route;
 import junit.framework.Assert;
 import junit.framework.TestCase;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 
 public class RouteDAOTest extends TestCase {
 

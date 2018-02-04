@@ -7,19 +7,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import asd.booking.dao.RouteDAO;
-import asd.booking.domain.trip.Route;
+import asd.booking.dao.TripDAO;
+import asd.booking.dao.UserDAO;
+import asd.booking.dao.factory.DAOFactory;
+import asd.booking.domain.trip.Trip;
 
 /**
- * Servlet implementation class ContinuingBookingServlet
+ * Servlet implementation class SearchTripServlet
  */
-public class ContinuingBookingServlet extends HttpServlet {
+public class SearchTripServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ContinuingBookingServlet() {
+	public SearchTripServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -30,19 +32,14 @@ public class ContinuingBookingServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String strId = request.getParameter("selection");
-		int routeId = -1;
-		try {
-			routeId = Integer.parseInt(strId);
-			HttpSession session = request.getSession(true);
-			Route route = RouteDAO.get(routeId);
-			session.setAttribute("route", route);
-			response.sendRedirect("passengerlist.jsp");
+		DAOFactory daoFactory = DAOFactory.getInstance("javabase.jdbc");
+		TripDAO tripDAO = daoFactory.getTripDAO();
+		String confirmedNumber = request.getParameter("confirmedvalue");
+		Trip trip = tripDAO.getTrip(confirmedNumber);// TODO Auto-generated method stub
+		HttpSession session = request.getSession(true);
+		session.setAttribute("currenttrip", trip);
 
-		} catch (NumberFormatException nfe) {
-			response.sendRedirect("error.jsp");
-		}
-
+		response.sendRedirect("tripdetail.jsp");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

@@ -7,6 +7,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import asd.booking.dao.PassengerDAO;
+import asd.booking.dao.PassengerDAOImpl;
+import asd.booking.dao.TripDAO;
+import asd.booking.dao.TripDAOImpl;
 import asd.booking.dao.UserDAO;
 import asd.booking.dao.UserDAOImpl;
 import asd.booking.dao.factory.exeption.DAOConfigurationException;
@@ -163,6 +167,14 @@ public abstract class DAOFactory {
 	 */
 	public UserDAO getUserDAO() {
 		return new UserDAOImpl(this);
+	}
+	
+	public TripDAO getTripDAO() {
+		return new TripDAOImpl(this);
+	}
+	
+	public PassengerDAO getPassengerDAO() {
+		return new PassengerDAOImpl(this);
 	}
 	
 	public UserDemoDAO getUserDemoDAO() {

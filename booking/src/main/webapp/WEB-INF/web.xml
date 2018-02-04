@@ -24,7 +24,7 @@
     <description></description>
     <display-name>SearchSchedule</display-name>
     <servlet-name>SearchSchedule</servlet-name>
-    <servlet-class>asd.booking.controller.SearchSchedule</servlet-class>
+    <servlet-class>asd.booking.controller.SearchScheduleServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchSchedule</servlet-name>
@@ -58,5 +58,35 @@
   <servlet-mapping>
     <servlet-name>ConfirmCheckingOutServlet</servlet-name>
     <url-pattern>/confirmcheckingout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PlaceOrder</display-name>
+    <servlet-name>PlaceOrder</servlet-name>
+    <servlet-class>asd.booking.controller.PlaceOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlaceOrder</servlet-name>
+    <url-pattern>/placeorder</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>asd.booking.controller.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchTripServlet</display-name>
+    <servlet-name>SearchTripServlet</servlet-name>
+    <servlet-class>asd.booking.controller.SearchTripServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchTripServlet</servlet-name>
+    <url-pattern>/searchtrip</url-pattern>
   </servlet-mapping>
 </web-app>

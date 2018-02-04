@@ -12,6 +12,7 @@ public class Customer extends User {
 	 * 
 	 */
 	private static final long serialVersionUID = 2556059344018580596L;
+	private Integer customerId;
 	private String firstName;
 	private String lastName;
 	private Address address;
@@ -32,8 +33,9 @@ public class Customer extends User {
 	 * @param cellPhone
 	 * @param email
 	 */
-	public Customer(String firstName, String lastName, String cellPhone, String email, User user) {
+	public Customer(Integer customerId, String firstName, String lastName, String cellPhone, String email, User user) {
 		super(user);
+		this.customerId = customerId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.cellPhone = cellPhone;
@@ -130,4 +132,17 @@ public class Customer extends User {
 		this.payment = payment;
 	}
 
+	/**
+	 * @return the customerId
+	 */
+	public Integer getCustomerId() {
+		return customerId;
+	}
+
+	/**
+	 * @param customerId the customerId to set
+	 */
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+	}
 }

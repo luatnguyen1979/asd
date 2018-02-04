@@ -7,19 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import asd.booking.dao.RouteDAO;
-import asd.booking.domain.trip.Route;
-
 /**
- * Servlet implementation class ContinuingBookingServlet
+ * Servlet implementation class LogoutServlet
  */
-public class ContinuingBookingServlet extends HttpServlet {
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ContinuingBookingServlet() {
+	public LogoutServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -30,19 +27,19 @@ public class ContinuingBookingServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String strId = request.getParameter("selection");
-		int routeId = -1;
-		try {
-			routeId = Integer.parseInt(strId);
-			HttpSession session = request.getSession(true);
-			Route route = RouteDAO.get(routeId);
-			session.setAttribute("route", route);
-			response.sendRedirect("passengerlist.jsp");
+		HttpSession session = request.getSession(true);
 
-		} catch (NumberFormatException nfe) {
-			response.sendRedirect("error.jsp");
-		}
+		session.setAttribute("discountrate", null);
+		session.setAttribute("passengerlist", null);
+		session.setAttribute("reportList", null);
+		session.setAttribute("portList", null);
+		session.setAttribute("numberpassenger", null);
+		session.setAttribute("tripway", null);
+		session.setAttribute("currentSessionUser", null);
+		session.setAttribute("currentSessionCustomer", null);
+		session.setAttribute("isLogged", null);
 
+		response.sendRedirect("login.jsp");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

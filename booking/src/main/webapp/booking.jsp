@@ -1,26 +1,44 @@
 <%@include file="header.jsp"%>
-<%@ page import="asd.booking.domain.trip.Port,java.util.List, java.util.ArrayList"%>
+<%@ page import="asd.booking.domain.trip.Port,java.util.List, java.util.ArrayList,asd.booking.domain.Customer"%>
 
 <%
     List<Port> portList = (ArrayList<Port>) session.getAttribute("portList");
-
+Customer customer = (Customer) session.getAttribute("currentSessionCustomer");
+String isLogged = (String)session.getAttribute("isLogged");
 %>
 
 
-<h1>See Where the Train Can Take You</h1>
+<h2>See Where the Train Can Take You</h2>
+<%
+if (isLogged!=null && isLogged.equals("true")) {
+%>
+<h4>
+    User: 
+    <%=customer.getFirstName() + " " + customer.getLastName()%></h4>
+<a href="logout">Log out</a>
+
+<%} else {
+%>
+<h4>
+    User: Guest
+    </h4>
+<a href="login.jsp">Log in</a>
+
+<%} %>
+
 <form id="bookingSearch" method="GET">
-	<table width="1024px" >
+	<table width="1024px" border=1>
 		<tr>
 			<td colspan="6" class="section" align="center">Book Tickets:</td>
 
 		</tr>
 		<tr>
-			<td width="16%">Trip</td>
-			<td width="20%">From</td>
-			<td width="20%">To</td>
-			<td width="17%">Depart</td>
-			<td width="17%">Return</td>
-			<td width="10%">Traveler</td>
+			<td width="16%" class="tdcenter">Trip</td>
+			<td width="20%" class="tdcenter">From</td>
+			<td width="20%" class="tdcenter">To</td>
+			<td width="17%" class="tdcenter">Depart</td>
+			<td width="17%" class="tdcenter">Return</td>
+			<td width="10%" class="tdcenter">Traveler</td>
 		</tr>
 		<tr>
             <td><select id="trip" name="trip" style="width:140px !important;">
@@ -53,7 +71,7 @@
         </tr>
 
 		<tr>
-			<td colspan="6" align="right"><input id="submit" type="button" value="Find Routes" onclick="searchRoute();return false;"/></td>
+			<td colspan="6" align="right"  class="bottomBorderLess"><br/><input id="submit" type="button" value="Home" onclick="window.location.href='userlogged.jsp'"/>&nbsp;&nbsp;<input id="submit" type="button" value="Find Routes" onclick="searchRoute();return false;"/></td>
 		</tr>
 		
 	</table>

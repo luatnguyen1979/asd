@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 public class Route {
 
-    private int id;
+    private Integer id;
     private Port source;
     private Port destination;
     private double duration;
@@ -20,7 +20,7 @@ public class Route {
     public Route() {
     }
 
-    public Route(int id, Port source, Port destination, double duration, double distance, double priceOneWay,
+    public Route(Integer id, Port source, Port destination, double duration, double distance, double priceOneWay,
                  double priceRoundWay, Train train, LocalDateTime departureDate,  LocalDateTime arrivalDate) {
         this.id = id;
         this.source = source;
@@ -34,11 +34,11 @@ public class Route {
         this.arrivalDate = arrivalDate;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -17,21 +17,23 @@ import asd.booking.domain.trip.Port;
  */
 public class BookingSearchOptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BookingSearchOptionServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public BookingSearchOptionServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try {
-		    System.out.println("test");
+			System.out.println("test");
 			List<Port> portList = PortDAO.getPortList();
 
 			if (portList != null) {
@@ -49,13 +51,15 @@ public class BookingSearchOptionServlet extends HttpServlet {
 			System.out.println(theException);
 		}
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
