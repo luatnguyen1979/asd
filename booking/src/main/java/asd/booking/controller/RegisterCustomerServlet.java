@@ -1,8 +1,6 @@
 package asd.booking.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import asd.booking.controller.observer.EmailObserver;
 import asd.booking.controller.observer.SendingEmailObserver;
+import asd.booking.controller.observer.SubjectOberserver;
 import asd.booking.dao.CustomerDAO;
 import asd.booking.domain.Address;
 import asd.booking.domain.Customer;
@@ -32,15 +31,6 @@ import asd.booking.utils.Utils;
 public class RegisterCustomerServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private List<EmailObserver> observers = new ArrayList<EmailObserver>();
-
-	public void attacheObserver(EmailObserver observer) {
-		observers.add(observer);
-	}
-
-	public void dettacheObserver(EmailObserver observer) {
-		observers.remove(observer);
-	}
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -112,10 +102,11 @@ public class RegisterCustomerServlet extends HttpServlet {
 			WelcomeEmail welcome = new WelcomeEmail();
 			SendEmailContext emailSendWelcome = SendEmailContext.getInstance(welcome);
 			EmailObserver observer = new SendingEmailObserver();
+			SubjectOberserver subjectObserver = SubjectOberserver.getInstance();
 			observer.setEmailContext(emailSendWelcome);
-			this.attacheObserver(observer);
-
-			notifiedObserver(cust);
+			subjectObserver.attacheObserver(observer);
+			subjectObserver.notifiedObserver(cust);
+			
 			if (id > 0) {
 
 				HttpSession session = request.getSession(true);
@@ -141,12 +132,6 @@ public class RegisterCustomerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
-	}
-
-	private void notifiedObserver(Customer customer) {
-		for (EmailObserver observer : observers) {
-			observer.sendEmail(customer);
-		}
 	}
 
 }

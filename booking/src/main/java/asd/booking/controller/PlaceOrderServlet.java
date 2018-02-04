@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import asd.booking.controller.observer.EmailObserver;
 import asd.booking.controller.observer.SendingEmailObserver;
+import asd.booking.controller.observer.SubjectOberserver;
 import asd.booking.dao.PassengerDAO;
 import asd.booking.dao.TripDAO;
 import asd.booking.dao.factory.DAOFactory;
@@ -33,15 +34,6 @@ import asd.booking.utils.UniqueStringGenerator;
  */
 public class PlaceOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private List<EmailObserver> observers = new ArrayList<EmailObserver>();
-	
-	public void attacheObserver(EmailObserver observer) {
-        observers.add(observer);
-    }
-
-    public void dettacheObserver(EmailObserver observer) {
-        observers.remove(observer);
-    }
     
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -88,13 +80,13 @@ public class PlaceOrderServlet extends HttpServlet {
 		session.setAttribute("confirmationnumber", confirmationNumber);
 
 		// TODO send email with Confirmation Code
-		ConfirmationEmail confirmEmail = new ConfirmationEmail(confirmationNumber);
+        ConfirmationEmail confirmEmail = new ConfirmationEmail(confirmationNumber);
         SendEmailContext emailSendWelcome = SendEmailContext.getInstance(confirmEmail);
         EmailObserver observer = new SendingEmailObserver();
+        SubjectOberserver subjectObserver = SubjectOberserver.getInstance();
         observer.setEmailContext(emailSendWelcome);
-        this.attacheObserver(observer);
-
-        notifiedObserver(cust);
+        subjectObserver.attacheObserver(observer);
+        subjectObserver.notifiedObserver(cust);
 
 		session.removeAttribute("discountrate");
 		session.removeAttribute("passengerlist");
@@ -123,11 +115,5 @@ public class PlaceOrderServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
-	private void notifiedObserver(Customer customer) {
-        for (EmailObserver observer : observers) {
-            observer.sendEmail(customer);
-        }
-    }
 
 }
