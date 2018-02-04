@@ -11,6 +11,8 @@ import asd.booking.dao.PassengerDAO;
 import asd.booking.dao.PassengerDAOImpl;
 import asd.booking.dao.PortDAO;
 import asd.booking.dao.PortDAOImpl;
+import asd.booking.dao.ReportDAO;
+import asd.booking.dao.ReportDAOImpl;
 import asd.booking.dao.RouteDAO;
 import asd.booking.dao.RouteDAOImpl;
 import asd.booking.dao.TrainDAO;
@@ -200,6 +202,10 @@ public abstract class DAOFactory {
 	
 	public UserDemoDAO getUserDemoDAO() {
 		return new UserDemoDAOJDBC(this);
+	}
+	
+	public ReportDAO getReportDAO() {
+		return new ReportDAOImpl(this);
 	}
 
 	// You can add more DAO implementation getters here.

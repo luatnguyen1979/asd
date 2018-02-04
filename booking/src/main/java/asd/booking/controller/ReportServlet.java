@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import asd.booking.dao.ReportDAO;
+import asd.booking.dao.UserDAO;
+import asd.booking.dao.factory.DAOFactory;
 import asd.booking.dao.proxy.ReportDaoProxy;
 import asd.booking.domain.Report;
 
@@ -22,14 +25,21 @@ public class ReportServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Report> reportList = null;
         try {
-            String startDate = req.getParameter("startdate");
-            String endDate = req.getParameter("enddate");
+            String startDate = "2017-01-01";
+            String endDate = "2018-12-31";
             if (startDate == null || startDate.isEmpty() || endDate == null || endDate.isEmpty()) {
                 resp.sendRedirect("error.jsp");
             }
-            ReportDaoProxy reportDaoProxy = new ReportDaoProxy(req);
-            reportList = reportDaoProxy.getList(startDate, endDate);
-            if (reportList != null && reportList.isEmpty()) {
+            //ReportDaoProxy reportDaoProxy = new ReportDaoProxy(req);
+            //ReportDAO reportProxy = new ReportDAO();
+            
+            DAOFactory daoFactory = DAOFactory.getInstance("javabase.jdbc");
+			ReportDAO reportDAO = daoFactory.getReportDAO();
+			
+			
+            //reportList = reportProxy.getList(startDate, endDate);
+			reportList = reportDAO.getList(startDate, endDate);
+            if (reportList != null && !reportList.isEmpty()) {
                 HttpSession session = req.getSession(true);
                 session.setAttribute("reportlist", reportList);
                 resp.sendRedirect("report.jsp"); // logged-in page

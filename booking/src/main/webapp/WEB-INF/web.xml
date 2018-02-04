@@ -89,4 +89,15 @@
     <servlet-name>SearchTripServlet</servlet-name>
     <url-pattern>/searchtrip</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReportServlet</display-name>
+    <servlet-name>ReportServlet</servlet-name>
+    <servlet-class>asd.booking.controller.ReportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReportServlet</servlet-name>
+    <url-pattern>/generatereport</url-pattern>
+  </servlet-mapping>
 </web-app>
+

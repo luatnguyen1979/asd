@@ -25,7 +25,7 @@ public class ReportDaoProxy implements IReportProxy {
         if (user == null) {
             throw new Exception("you have no authorization to get the report!!!");
         } else {
-            reportProxy = new ReportDAO();
+           // reportProxy = new ReportDAO();
         }
     }
 

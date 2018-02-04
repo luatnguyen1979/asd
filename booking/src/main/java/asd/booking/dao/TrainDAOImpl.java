@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import asd.booking.dao.factory.DAOFactory;
 import asd.booking.dao.factory.exeption.DAOException;
 import asd.booking.domain.Train;
-import asd.booking.domain.trip.Route;
 
 /**
  * @author luatnguyen
@@ -22,7 +21,7 @@ import asd.booking.domain.trip.Route;
 public class TrainDAOImpl implements TrainDAO {
 	private DAOFactory daoFactory;
 	
-	private static final String SQL_FIND_BY_TRAIN_ID = "SELECT * FROM route WHERE id = ?";
+	private static final String SQL_FIND_BY_TRAIN_ID = "SELECT * FROM train WHERE trainid = ?";
 
 	/**
 	 * Construct an User DAO for the given DAOFactory. Package private so that it

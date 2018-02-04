@@ -27,11 +27,11 @@ Integer numberPassenger = (Integer) session.getAttribute("numberpassenger");
             <td width="10%"><%=i + 1 %></td>
             <td width="60%"><input size=50 type=text name="fullname<%= i + 1%>"></td>
             <td width="30%"><select id="passengerType" name="passengertype<%= i + 1%>" style="width:140px !important;">
-                    <option value="senior">Senior</option>
-                    <option value="sdult" selected>Adult</option>
-                    <option value="military">Military</option>
-                    <option value="child">Child</option>
-                    <option value="infant">Infant</option>
+                    <option value="Senior">Senior</option>
+                    <option value="Adult" selected>Adult</option>
+                    <option value="Military">Military</option>
+                    <option value="Child">Child</option>
+                    <option value="Infant">Infant</option>
                 </select></td>
 
         </tr>
