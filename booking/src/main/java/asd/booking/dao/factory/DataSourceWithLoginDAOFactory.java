@@ -27,4 +27,15 @@ public class DataSourceWithLoginDAOFactory extends DAOFactory {
 	public Connection getConnection() throws SQLException {
 		return dataSource.getConnection(username, password);
 	}
+
+	/* (non-Javadoc)
+	 * @see asd.booking.dao.factory.DAOFactory#free(java.sql.Connection)
+	 */
+	@Override
+	public void free(Connection connection) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 }
