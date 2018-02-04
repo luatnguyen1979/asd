@@ -21,6 +21,11 @@ public class Port  implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Port(int id) {
+		this.id = id;
+		// TODO Auto-generated constructor stub
+	}
 
 	public Port(Integer id, String name, Integer addressId) {
         this.id = id;

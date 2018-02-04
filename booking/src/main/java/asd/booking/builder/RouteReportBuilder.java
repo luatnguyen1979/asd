@@ -23,8 +23,8 @@ public class RouteReportBuilder implements ReportBuilder<Route> {
         report.setTrainName(route.getTrain().getName());
         DAOFactory daoFactory = DAOFactory.getInstance("javabase.jdbc");
         PortDAO portDAO = daoFactory.getPortDAO();
-		
-        report.setSourceName(portDAO.get(route.getSourceId()).getName());
-        report.setDestName(portDAO.get(route.getDestinationId()).getName());
+
+        report.setSourceName(portDAO.get(route.getSource().getId()).getName());
+        report.setDestName(portDAO.get(route.getDestination().getId()).getName());
     }
 }

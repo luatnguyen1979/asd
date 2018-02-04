@@ -15,6 +15,7 @@ import java.util.List;
 import asd.booking.dao.factory.DAOFactory;
 import asd.booking.dao.factory.exeption.DAOException;
 import asd.booking.domain.Train;
+import asd.booking.domain.trip.Port;
 import asd.booking.domain.trip.Route;
 
 /**
@@ -24,7 +25,7 @@ import asd.booking.domain.trip.Route;
 public class RouteDAOImpl implements RouteDAO {
 	private DAOFactory daoFactory;
 
-	private static final String SQL_FIND_ALL = "SELECT * FROM route r WHERE sourceport_id = ? AND destinationport_id = ? AND DATE(?) = ?";
+	private static final String SQL_FIND_ALL = "SELECT * FROM route r WHERE sourceport_id = ? AND destinationport_id = ? AND DATE(departuredate) = ?";
 	private static final String SQL_FIND_BY_ROUTE_ID = "SELECT * FROM route WHERE id = ?";
 
 	/**
@@ -86,8 +87,13 @@ public class RouteDAOImpl implements RouteDAO {
 	 */
 	private void map(Route route, ResultSet resultSet) throws SQLException {
 		route.setId(resultSet.getInt("id"));
-		route.setSourceId(resultSet.getInt("sourceport_id"));
-		route.setDestinationId(resultSet.getInt("detinationport_id"));
+		
+		daoFactory = DAOFactory.getInstance("javabase.jdbc");
+		PortDAO portDAO = daoFactory.getPortDAO();
+		Port sport = portDAO.get(resultSet.getInt("sourceport_id"));
+		route.setSource(sport);
+		Port dport = portDAO.get(resultSet.getInt("destinationport_id"));
+		route.setDestination(dport);
 		route.setDuration(resultSet.getDouble("duration"));
 		route.setDistance(resultSet.getDouble("distance"));
 		route.setPriceOneWay(resultSet.getDouble("pricesingleway"));

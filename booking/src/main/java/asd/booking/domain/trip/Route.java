@@ -7,8 +7,8 @@ import asd.booking.domain.Train;
 public class Route {
 
     private Integer id;
-    private Integer sourceId;
-    private Integer destinationId;
+    private Port source;
+    private Port destination;
     private double duration;
     private double distance;
     private double priceOneWay;
@@ -20,11 +20,11 @@ public class Route {
     public Route() {
     }
 
-    public Route(Integer id, Integer sourceId, Integer destinationId, double duration, double distance, double priceOneWay,
+    public Route(Integer id, Port source, Port destination, double duration, double distance, double priceOneWay,
                  double priceRoundWay, LocalDateTime departureDate,  LocalDateTime arrivalDate) {
         this.id = id;
-        this.sourceId = sourceId;
-        this.destinationId = destinationId;
+        this.source = source;
+        this.destination = destination;
         this.duration = duration;
         this.distance = distance;
         this.priceOneWay = priceOneWay;
@@ -47,32 +47,34 @@ public class Route {
 		this.id = id;
 	}
 
+	
+
 	/**
-	 * @return the sourceId
+	 * @return the source
 	 */
-	public Integer getSourceId() {
-		return sourceId;
+	public Port getSource() {
+		return source;
 	}
 
 	/**
-	 * @param sourceId the sourceId to set
+	 * @param source the source to set
 	 */
-	public void setSourceId(Integer sourceId) {
-		this.sourceId = sourceId;
+	public void setSource(Port source) {
+		this.source = source;
 	}
 
 	/**
-	 * @return the destinationId
+	 * @return the destination
 	 */
-	public Integer getDestinationId() {
-		return destinationId;
+	public Port getDestination() {
+		return destination;
 	}
 
 	/**
-	 * @param destinationId the destinationId to set
+	 * @param destination the destination to set
 	 */
-	public void setDestinationId(Integer destinationId) {
-		this.destinationId = destinationId;
+	public void setDestination(Port destination) {
+		this.destination = destination;
 	}
 
 	/**
