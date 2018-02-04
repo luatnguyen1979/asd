@@ -7,32 +7,30 @@ package asd.booking.dao;
  * @author luatnguyen
  */
 
+import asd.booking.utils.Config;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionManager {
 
+    private static final String PROPERTY_URL = "javabase.jdbc.url";
+    private static final String PROPERTY_DRIVER = "javabase.jdbc.driver";
+    private static final String PROPERTY_USERNAME = "javabase.jdbc.username";
+    private static final String PROPERTY_PASSWORD = "javabase.jdbc.password";
     static Connection con;
-    static String url;
 
     public static Connection getConnection() {
 
         try {
 
-            String url = "jdbc:mysql://localhost/booking";
-//			Class.forName ("com.mysql.jdbc.Driver").newInstance ();
-//			Connection conn = DriverManager.getConnection (url, "username", "password");
-//			String url = "jdbc:odbc:" + "DataSource";
-            // assuming "DataSource" is your DataSource name
+            String url = Config.getString(PROPERTY_URL);
 
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            Class.forName(Config.getString(PROPERTY_DRIVER)).newInstance();
 
             try {
-                con = DriverManager.getConnection(url, "root", "root");
-
-                // assuming your SQL Server's username is "username"
-                // and password is "password"
+                con = DriverManager.getConnection(url, Config.getString(PROPERTY_USERNAME), Config.getString(PROPERTY_PASSWORD));
 
             } catch (SQLException ex) {
                 ex.printStackTrace();

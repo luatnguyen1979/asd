@@ -12,7 +12,12 @@ import java.util.Properties;
  */
 public class Config {
 
-    private static Properties properties;
+    public static Properties properties;
+    public static String filePath;
+
+    static {
+        loadConfig();
+    }
 
     /**
      * Load properties file that located in the Tomcat base directory's conf folder.
@@ -21,6 +26,7 @@ public class Config {
         try {
             File configDir = new File(System.getProperty("catalina.base"), "conf");
             File configFile = new File(configDir, "myconfig.properties");
+            filePath = configFile.getAbsolutePath();
             InputStream stream = new FileInputStream(configFile);
             properties = new Properties();
             properties.load(stream);
