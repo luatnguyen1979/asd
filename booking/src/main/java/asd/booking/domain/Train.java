@@ -11,6 +11,7 @@ public class Train  implements Serializable  {
 	 * 
 	 */
 	private static final long serialVersionUID = -6066395442162732450L;
+	private int trainId;
 	private String name;
     private String type;
     private String model;
@@ -19,6 +20,10 @@ public class Train  implements Serializable  {
     private int capacity;
 
     public Train() {
+    }
+    
+    public Train(Integer trainId) {
+    	this.trainId = trainId;
     }
 
     public Train(String name, String type, String model, String madeBy, boolean isActive, int capacity) {
@@ -77,4 +82,19 @@ public class Train  implements Serializable  {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
+	/**
+	 * @return the trainId
+	 */
+	public int getTrainId() {
+		return trainId;
+	}
+
+	/**
+	 * @param trainId the trainId to set
+	 */
+	public void setTrainId(int trainId) {
+		this.trainId = trainId;
+	}
+    
 }

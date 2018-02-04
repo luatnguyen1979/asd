@@ -1,5 +1,8 @@
 package asd.booking.builder;
 
+import asd.booking.dao.PortDAO;
+import asd.booking.dao.UserDAO;
+import asd.booking.dao.factory.DAOFactory;
 import asd.booking.domain.Report;
 import asd.booking.domain.trip.Route;
 import asd.booking.utils.DateTimeUtils;
@@ -18,7 +21,10 @@ public class RouteReportBuilder implements ReportBuilder<Route> {
     public void build() {
         report.setDate(DateTimeUtils.adaptToDateTime(route.getDepartureDate()));
         report.setTrainName(route.getTrain().getName());
-        report.setSourceName(route.getSource().getName());
-        report.setDestName(route.getDestination().getName());
+        DAOFactory daoFactory = DAOFactory.getInstance("javabase.jdbc");
+        PortDAO portDAO = daoFactory.getPortDAO();
+		
+        report.setSourceName(portDAO.get(route.getSourceId()).getName());
+        report.setDestName(portDAO.get(route.getDestinationId()).getName());
     }
 }

@@ -9,6 +9,12 @@ import javax.sql.DataSource;
 
 import asd.booking.dao.PassengerDAO;
 import asd.booking.dao.PassengerDAOImpl;
+import asd.booking.dao.PortDAO;
+import asd.booking.dao.PortDAOImpl;
+import asd.booking.dao.RouteDAO;
+import asd.booking.dao.RouteDAOImpl;
+import asd.booking.dao.TrainDAO;
+import asd.booking.dao.TrainDAOImpl;
 import asd.booking.dao.TripDAO;
 import asd.booking.dao.TripDAOImpl;
 import asd.booking.dao.UserDAO;
@@ -175,6 +181,18 @@ public abstract class DAOFactory {
 	
 	public PassengerDAO getPassengerDAO() {
 		return new PassengerDAOImpl(this);
+	}
+	
+	public PortDAO getPortDAO() {
+		return new PortDAOImpl(this);
+	}
+	
+	public RouteDAO getRouteDAO() {
+		return new RouteDAOImpl(this);
+	}
+	
+	public TrainDAO getTrainDAO() {
+		return new TrainDAOImpl(this);
 	}
 	
 	public UserDemoDAO getUserDemoDAO() {

@@ -1,14 +1,14 @@
 package asd.booking.domain.trip;
 
-import asd.booking.domain.Train;
-
 import java.time.LocalDateTime;
+
+import asd.booking.domain.Train;
 
 public class Route {
 
     private Integer id;
-    private Port source;
-    private Port destination;
+    private Integer sourceId;
+    private Integer destinationId;
     private double duration;
     private double distance;
     private double priceOneWay;
@@ -20,97 +20,159 @@ public class Route {
     public Route() {
     }
 
-    public Route(Integer id, Port source, Port destination, double duration, double distance, double priceOneWay,
-                 double priceRoundWay, Train train, LocalDateTime departureDate,  LocalDateTime arrivalDate) {
+    public Route(Integer id, Integer sourceId, Integer destinationId, double duration, double distance, double priceOneWay,
+                 double priceRoundWay, LocalDateTime departureDate,  LocalDateTime arrivalDate) {
         this.id = id;
-        this.source = source;
-        this.destination = destination;
+        this.sourceId = sourceId;
+        this.destinationId = destinationId;
         this.duration = duration;
         this.distance = distance;
         this.priceOneWay = priceOneWay;
         this.priceRoundWay = priceRoundWay;
-        this.train = train;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
     }
 
-    public Integer getId() {
-        return id;
-    }
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Port getSource() {
-        return source;
-    }
+	/**
+	 * @return the sourceId
+	 */
+	public Integer getSourceId() {
+		return sourceId;
+	}
 
-    public void setSource(Port source) {
-        this.source = source;
-    }
+	/**
+	 * @param sourceId the sourceId to set
+	 */
+	public void setSourceId(Integer sourceId) {
+		this.sourceId = sourceId;
+	}
 
-    public Port getDestination() {
-        return destination;
-    }
+	/**
+	 * @return the destinationId
+	 */
+	public Integer getDestinationId() {
+		return destinationId;
+	}
 
-    public void setDestination(Port destination) {
-        this.destination = destination;
-    }
+	/**
+	 * @param destinationId the destinationId to set
+	 */
+	public void setDestinationId(Integer destinationId) {
+		this.destinationId = destinationId;
+	}
 
-    public double getDuration() {
-        return duration;
-    }
+	/**
+	 * @return the duration
+	 */
+	public double getDuration() {
+		return duration;
+	}
 
-    public void setDuration(double duration) {
-        this.duration = duration;
-    }
+	/**
+	 * @param duration the duration to set
+	 */
+	public void setDuration(double duration) {
+		this.duration = duration;
+	}
 
-    public double getDistance() {
-        return distance;
-    }
+	/**
+	 * @return the distance
+	 */
+	public double getDistance() {
+		return distance;
+	}
 
-    public void setDistance(double distance) {
-        this.distance = distance;
-    }
+	/**
+	 * @param distance the distance to set
+	 */
+	public void setDistance(double distance) {
+		this.distance = distance;
+	}
 
-    public double getPriceOneWay() {
-        return priceOneWay;
-    }
+	/**
+	 * @return the priceOneWay
+	 */
+	public double getPriceOneWay() {
+		return priceOneWay;
+	}
 
-    public void setPriceOneWay(double priceOneWay) {
-        this.priceOneWay = priceOneWay;
-    }
+	/**
+	 * @param priceOneWay the priceOneWay to set
+	 */
+	public void setPriceOneWay(double priceOneWay) {
+		this.priceOneWay = priceOneWay;
+	}
 
-    public double getPriceRoundWay() {
-        return priceRoundWay;
-    }
+	/**
+	 * @return the priceRoundWay
+	 */
+	public double getPriceRoundWay() {
+		return priceRoundWay;
+	}
 
-    public void setPriceRoundWay(double priceRoundWay) {
-        this.priceRoundWay = priceRoundWay;
-    }
+	/**
+	 * @param priceRoundWay the priceRoundWay to set
+	 */
+	public void setPriceRoundWay(double priceRoundWay) {
+		this.priceRoundWay = priceRoundWay;
+	}
 
-    public Train getTrain() {
-        return train;
-    }
+	/**
+	 * @return the departureDate
+	 */
+	public LocalDateTime getDepartureDate() {
+		return departureDate;
+	}
 
-    public void setTrain(Train train) {
-        this.train = train;
-    }
+	/**
+	 * @param departureDate the departureDate to set
+	 */
+	public void setDepartureDate(LocalDateTime departureDate) {
+		this.departureDate = departureDate;
+	}
 
-    public LocalDateTime getDepartureDate() {
-        return departureDate;
-    }
+	/**
+	 * @return the arrivalDate
+	 */
+	public LocalDateTime getArrivalDate() {
+		return arrivalDate;
+	}
 
-    public void setDepartureDate(LocalDateTime departureDate) {
-        this.departureDate = departureDate;
-    }
+	/**
+	 * @param arrivalDate the arrivalDate to set
+	 */
+	public void setArrivalDate(LocalDateTime arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
 
-    public LocalDateTime getArrivalDate() {
-        return arrivalDate;
-    }
+	/**
+	 * @return the trainId
+	 */
+	public Train getTrain() {
+		return train;
+	}
 
-    public void setArrivalDate(LocalDateTime arrivalDate) {
-        this.arrivalDate = arrivalDate;
-    }
+	/**
+	 * @param trainId the trainId to set
+	 */
+	public void setTrain(Train train) {
+		this.train = train;
+	}
+
+	
+    
 }

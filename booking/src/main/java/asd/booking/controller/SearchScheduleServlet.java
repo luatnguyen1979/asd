@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import asd.booking.dao.RouteDAO;
+import asd.booking.dao.factory.DAOFactory;
 import asd.booking.domain.trip.Route;
 
 /**
@@ -56,9 +57,12 @@ public class SearchScheduleServlet extends HttpServlet {
 			session.setAttribute("numberpassenger", new Integer(numberPassenger));
 			session.setAttribute("tripway", tripWay);
 			List<Route> routeList = (List<Route>) request.getSession().getAttribute("routelist");
-			if (routeList == null)
-				routeList = RouteDAO.getRoute(sourcePortId, destinationPortId, departDate);
-
+			
+			if (routeList == null) {
+				DAOFactory daoFactory = DAOFactory.getInstance("javabase.jdbc");
+				RouteDAO routeDAO = daoFactory.getRouteDAO();
+				routeList = routeDAO.getRoute(sourcePortId, destinationPortId, departDate);
+			}
 			if (routeList != null) {
 				String json = new Gson().toJson(routeList);
 				response.setContentType("application/json");

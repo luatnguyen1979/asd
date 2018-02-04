@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import asd.booking.dao.PortDAO;
+import asd.booking.dao.UserDAO;
+import asd.booking.dao.factory.DAOFactory;
 import asd.booking.domain.trip.Port;
 
 /**
@@ -34,7 +36,9 @@ public class BookingSearchOptionServlet extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			System.out.println("test");
-			List<Port> portList = PortDAO.getPortList();
+			DAOFactory daoFactory = DAOFactory.getInstance("javabase.jdbc");
+			PortDAO portDAO = daoFactory.getPortDAO();
+			List<Port> portList = portDAO.getPortList();
 
 			if (portList != null) {
 

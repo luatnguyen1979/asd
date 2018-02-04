@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import asd.booking.dao.RouteDAO;
+import asd.booking.dao.TrainDAO;
+import asd.booking.dao.UserDAO;
+import asd.booking.dao.factory.DAOFactory;
+import asd.booking.domain.Train;
 import asd.booking.domain.trip.Route;
 
 /**
@@ -35,7 +39,15 @@ public class ContinuingBookingServlet extends HttpServlet {
 		try {
 			routeId = Integer.parseInt(strId);
 			HttpSession session = request.getSession(true);
-			Route route = RouteDAO.get(routeId);
+			DAOFactory daoFactory = DAOFactory.getInstance("javabase.jdbc");
+			RouteDAO routeDAO = daoFactory.getRouteDAO();
+			
+			TrainDAO trainDAO = daoFactory.getTrainDAO();
+			
+			Route route = routeDAO.get(routeId);
+			Train train = trainDAO.get(route.getTrain().getTrainId());
+			route.setTrain(train);
+			
 			session.setAttribute("route", route);
 			response.sendRedirect("passengerlist.jsp");
 
