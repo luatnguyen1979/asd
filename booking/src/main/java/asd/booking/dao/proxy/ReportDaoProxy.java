@@ -9,7 +9,8 @@ import javax.servlet.http.HttpSession;
 import asd.booking.dao.ReportDAO;
 import asd.booking.domain.Report;
 import asd.booking.domain.User;
-import asd.booking.iteration.ArrayIteration;
+
+import java.util.List;
 
 public class ReportDaoProxy implements IReportProxy {
 
@@ -29,7 +30,7 @@ public class ReportDaoProxy implements IReportProxy {
     }
 
     @Override
-    public ArrayIteration<Report> getList(String startDate, String enddate) {
+    public List<Report> getList(String startDate, String enddate) {
         return reportProxy.getList(startDate, enddate);
     }
 

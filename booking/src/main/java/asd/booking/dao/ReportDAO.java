@@ -3,10 +3,11 @@ package asd.booking.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import asd.booking.dao.proxy.IReportProxy;
 import asd.booking.domain.Report;
-import asd.booking.iteration.ArrayIteration;
 
 public class ReportDAO implements IReportProxy {
 
@@ -15,8 +16,8 @@ public class ReportDAO implements IReportProxy {
     static PreparedStatement ps = null;
 
     @Override
-    public ArrayIteration<Report> getList(String startDate, String enddate) {
-        ArrayIteration<Report> ret = new ArrayIteration<>(Report.class);
+    public List<Report> getList(String startDate, String enddate) {
+        List<Report> ret = new ArrayList<>();
         final String sql = "SELECT * FROM report WHERE date >= ? and date < ?";
         try {
             currentCon = ConnectionManager.getConnection();
