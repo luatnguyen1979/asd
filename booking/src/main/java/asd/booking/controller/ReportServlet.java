@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import asd.booking.dao.proxy.ReportDaoProxy;
 import asd.booking.domain.Report;
+import asd.booking.iteration.ArrayIteration;
 
 public class ReportServlet extends HttpServlet {
 
@@ -20,7 +21,7 @@ public class ReportServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Report> reportList = null;
+        ArrayIteration<Report> reportList = null;
         try {
             String startDate = req.getParameter("startdate");
             String endDate = req.getParameter("enddate");

@@ -39,6 +39,7 @@ public class ConfirmCheckingOutServlet extends HttpServlet {
 		String promotionCode = request.getParameter("promotioncode");
 		double discountrate = Calculation.getPromotionRatio(promotionCode);
 		String tripWay = (String)session.getAttribute("tripway");
+		//TODO use prototype here.
 		for (int i = 0; i < numberPassenger; i ++) {
 			String fullName = request.getParameter("fullname" + i + 1);
 			String passengerType = request.getParameter("passengertype" + i + 1);

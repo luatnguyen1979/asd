@@ -3,11 +3,10 @@
  */
 package asd.booking.dao.proxy;
 
-import java.util.List;
-
 import asd.booking.domain.Report;
+import asd.booking.iteration.ArrayIteration;
 
 public interface IReportProxy {
 
-    public List<Report> getList(String startDate, String enddate);
+    public ArrayIteration<Report> getList(String startDate, String enddate);
 }

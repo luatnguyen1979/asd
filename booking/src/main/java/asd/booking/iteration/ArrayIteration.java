@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 
 public class ArrayIteration<T> implements Aggregate {
 
-    private static final int defaultLen = 30;
+    private static final int DEFAULT_LEN = 30;
     private int idx;
     private int size;
     private int len;
@@ -18,6 +18,14 @@ public class ArrayIteration<T> implements Aggregate {
         this.len = len;
         this.type = type;
         this.data = (T[]) Array.newInstance(this.type, this.len);
+    }
+
+    public ArrayIteration(Class<T> type) {
+        this.size = 0;
+        this.idx = 0;
+        this.len = DEFAULT_LEN;
+        this.type = type;
+        this.data = (T[]) Array.newInstance(this.type, DEFAULT_LEN);
     }
 
     public boolean add(T t) {
@@ -49,6 +57,8 @@ public class ArrayIteration<T> implements Aggregate {
     public int getSize() {
         return size;
     }
+
+    public int size(){return size;}
 
     public void resize() {
         int i;
