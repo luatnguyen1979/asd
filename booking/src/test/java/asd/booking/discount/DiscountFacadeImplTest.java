@@ -1,7 +1,9 @@
 package asd.booking.discount;
 
-import asd.booking.builder.TripReportBuilder;
-import asd.booking.dao.*;
+import asd.booking.dao.PassengerDAO;
+import asd.booking.dao.PassengerDAOImpl;
+import asd.booking.dao.RouteDAO;
+import asd.booking.dao.TripDAO;
 import asd.booking.dao.factory.DAOFactory;
 import asd.booking.domain.trip.Route;
 import asd.booking.domain.trip.Trip;
@@ -14,8 +16,11 @@ public class DiscountFacadeImplTest extends TestCase {
 
     public void testGetPrice() {
         DiscountFacadeImpl discountFacade = new DiscountFacadeImpl();
-        TripDAO tripDAO = new TripDAOImpl(DAOFactory.getInstance("javabase.jdbc"));
-        Route route = RouteDAO.get(1);
+        DAOFactory javabase = DAOFactory.getInstance("javabase.jdbc");
+		RouteDAO routeDAO = javabase.getRouteDAO();
+        TripDAO tripDAO = javabase.getTripDAO();
+        
+        Route route = routeDAO.get(1);
         Trip trip = tripDAO.getTrip(1);
         PassengerDAO passengerDAO = new PassengerDAOImpl(DAOFactory.getInstance("javabase.jdbc"));
         trip.setPassengerList(passengerDAO.getList(1));
@@ -23,7 +28,11 @@ public class DiscountFacadeImplTest extends TestCase {
     }
 
     public void testGetPrice1() {
-        Route route = RouteDAO.get(1);
+    	DAOFactory javabase = DAOFactory.getInstance("javabase.jdbc");
+		RouteDAO routeDAO = javabase.getRouteDAO();
+ 
+        Route route = routeDAO.get(1);
+ 
         DiscountFacadeImpl discountFacade = new DiscountFacadeImpl();
         Double expected = 31.0;
         Assert.assertEquals(expected, discountFacade.getPrice(route, PassengerType.ADULT, TripType.SINGLE.getName()));
