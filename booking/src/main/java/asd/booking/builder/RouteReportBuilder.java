@@ -2,7 +2,7 @@ package asd.booking.builder;
 
 import asd.booking.domain.Report;
 import asd.booking.domain.trip.Route;
-import asd.booking.utils.DateUtils;
+import asd.booking.utils.DateTimeUtils;
 
 public class RouteReportBuilder implements ReportBuilder<Route> {
 
@@ -16,7 +16,7 @@ public class RouteReportBuilder implements ReportBuilder<Route> {
 
     @Override
     public void build() {
-        report.setDate(DateUtils.adaptToDate(route.getDepartureDate()));
+        report.setDate(DateTimeUtils.adaptToDateTime(route.getDepartureDate()));
         report.setTrainName(route.getTrain().getName());
         report.setSourceName(route.getSource().getName());
         report.setDestName(route.getDestination().getName());
