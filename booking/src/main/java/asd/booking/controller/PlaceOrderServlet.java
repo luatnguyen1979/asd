@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import asd.booking.controller.observer.EmailObserver;
+import asd.booking.controller.observer.SendingEmailObserver;
 import asd.booking.dao.PassengerDAO;
 import asd.booking.dao.TripDAO;
-import asd.booking.dao.UserDAO;
 import asd.booking.dao.factory.DAOFactory;
 import asd.booking.discount.DiscountFacadeImpl;
 import asd.booking.discount.IDiscountFacade;
@@ -22,6 +23,8 @@ import asd.booking.domain.User;
 import asd.booking.domain.trip.Passenger;
 import asd.booking.domain.trip.Route;
 import asd.booking.domain.trip.Trip;
+import asd.booking.mail.pattern.ConfirmationEmail;
+import asd.booking.mail.pattern.SendEmailContext;
 import asd.booking.utils.DateTimeUtils;
 import asd.booking.utils.UniqueStringGenerator;
 
@@ -30,7 +33,16 @@ import asd.booking.utils.UniqueStringGenerator;
  */
 public class PlaceOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private List<EmailObserver> observers = new ArrayList<EmailObserver>();
+	
+	public void attacheObserver(EmailObserver observer) {
+        observers.add(observer);
+    }
 
+    public void dettacheObserver(EmailObserver observer) {
+        observers.remove(observer);
+    }
+    
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -76,7 +88,13 @@ public class PlaceOrderServlet extends HttpServlet {
 		session.setAttribute("confirmationnumber", confirmationNumber);
 
 		// TODO send email with Confirmation Code
-		// Remove all attribute after ordering successful
+		ConfirmationEmail confirmEmail = new ConfirmationEmail(confirmationNumber);
+        SendEmailContext emailSendWelcome = SendEmailContext.getInstance(confirmEmail);
+        EmailObserver observer = new SendingEmailObserver();
+        observer.setEmailContext(emailSendWelcome);
+        this.attacheObserver(observer);
+
+        notifiedObserver(cust);
 
 		session.removeAttribute("discountrate");
 		session.removeAttribute("passengerlist");
@@ -105,5 +123,11 @@ public class PlaceOrderServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+	
+	private void notifiedObserver(Customer customer) {
+        for (EmailObserver observer : observers) {
+            observer.sendEmail(customer);
+        }
+    }
 
 }
