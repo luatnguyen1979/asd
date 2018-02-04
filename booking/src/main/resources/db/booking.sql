@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `booking` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `booking`;
--- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.21, for Linux (x86_64)
 --
 -- Host: localhost    Database: booking
 -- ------------------------------------------------------
--- Server version   5.7.19
+-- Server version	5.5.5-10.1.29-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -91,9 +91,11 @@ CREATE TABLE `passenger` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fullname` varchar(50) DEFAULT NULL,
   `type` varchar(10) NOT NULL,
-  `tripid` int(11) DEFAULT NULL,
+  `trip_id` int(11) NOT NULL,
   `price` decimal(10,2) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_passenger_1_idx` (`trip_id`),
+  CONSTRAINT `fk_passenger_1` FOREIGN KEY (`trip_id`) REFERENCES `trip` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -103,7 +105,7 @@ CREATE TABLE `passenger` (
 
 LOCK TABLES `passenger` WRITE;
 /*!40000 ALTER TABLE `passenger` DISABLE KEYS */;
-INSERT INTO `passenger` VALUES (1,'Adult','Adult',NULL,NULL),(2,'Passenger with Disability (PWD)','Adult',NULL,NULL),(3,'Companion (Book with PWD)','Adult',NULL,NULL),(4,'Kimtey Chav','Adult',NULL,NULL),(5,'Luat Nguyen','Adult',NULL,NULL),(6,'Enkh Enkh','Adult',NULL,NULL),(7,'Tam Nguyen','Adult',NULL,NULL),(8,'Dat Doan','Senior',NULL,NULL),(9,'Vu Le','Senior',NULL,NULL),(10,'Dan Cao','Senior',NULL,NULL),(11,'Tam Huynh','Military',NULL,NULL),(12,'Nam Ngo','Military',NULL,NULL),(13,'Vu Ngo','Senior',NULL,NULL),(14,'Tin Nguyen','Senior',NULL,NULL),(15,'Trung Nguyen','Child',NULL,NULL),(16,'Dung Dinh','Child',NULL,NULL),(17,'Han Nguyen','Infant',NULL,NULL),(18,'Mi Tran','Child',NULL,NULL),(19,'Quoc Nguyen','Infant',NULL,NULL);
+INSERT INTO `passenger` VALUES (1,'Adult','Adult',1,NULL),(2,'Passenger with Disability (PWD)','Adult',1,NULL),(3,'Companion (Book with PWD)','Adult',1,NULL),(4,'Kimtey Chav','Adult',1,NULL),(5,'Luat Nguyen','Adult',1,NULL),(6,'Enkh Enkh','Adult',1,NULL),(7,'Tam Nguyen','Adult',1,NULL),(8,'Dat Doan','Senior',1,NULL),(9,'Vu Le','Senior',1,NULL),(10,'Dan Cao','Senior',1,NULL),(11,'Tam Huynh','Military',1,NULL),(12,'Nam Ngo','Military',1,NULL),(13,'Vu Ngo','Senior',1,NULL),(14,'Tin Nguyen','Senior',1,NULL),(15,'Trung Nguyen','Child',1,NULL),(16,'Dung Dinh','Child',1,NULL),(17,'Han Nguyen','Infant',1,NULL),(18,'Mi Tran','Child',1,NULL),(19,'Quoc Nguyen','Infant',1,NULL);
 /*!40000 ALTER TABLE `passenger` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -273,7 +275,7 @@ DROP TABLE IF EXISTS `trip`;
 CREATE TABLE `trip` (
   `id` int(11) NOT NULL,
   `tripway` varchar(20) NOT NULL,
-  `bookDate` datetime NOT NULL,
+  `bookdate` datetime NOT NULL,
   `route_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `confimationnumber` varchar(45) DEFAULT NULL,
@@ -293,6 +295,7 @@ CREATE TABLE `trip` (
 
 LOCK TABLES `trip` WRITE;
 /*!40000 ALTER TABLE `trip` DISABLE KEYS */;
+INSERT INTO `trip` VALUES (1,'singleway','2018-02-03 19:15:03',1,1,'ABC123',150.00);
 /*!40000 ALTER TABLE `trip` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -334,4 +337,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-02  3:31:51
+-- Dump completed on 2018-02-03 19:19:32

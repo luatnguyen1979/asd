@@ -25,7 +25,7 @@ public class PassengerDAO {
             ps.setString(1, passenger.getFullname());
             ps.setString(2, passenger.getPassengerType().toString());
             ps.setDouble(3, passenger.getPrice());
-            ps.setInt(3, passenger.getTripId());
+            ps.setInt(4, passenger.getTripId());
 
             if (ps.executeUpdate() == 0) {
                 throw new SQLException("No row is affected.");
@@ -64,7 +64,7 @@ public class PassengerDAO {
 
     public static List<Passenger> getList(int tripId) {
         List<Passenger> passengerList = new LinkedList<>();
-        final String sql = "SELECT * FROM passenger WHERE id = ?";
+        final String sql = "SELECT * FROM passenger WHERE trip_id = ?";
         try {
             currentCon = ConnectionManager.getConnection();
             ps = currentCon.prepareStatement(sql);
@@ -110,7 +110,7 @@ public class PassengerDAO {
 
     public static int getCount(int tripId) {
         int ret = 0;
-        final String sql = "SELECT count(*) FROM passenger WHERE id = ?";
+        final String sql = "SELECT count(*) FROM passenger WHERE trip_id = ?";
         try {
             currentCon = ConnectionManager.getConnection();
             ps = currentCon.prepareStatement(sql);
