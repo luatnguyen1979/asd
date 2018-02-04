@@ -14,9 +14,10 @@ public class User implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 8241943357544065394L;
-	private int userId;
+	private Integer userId;
 	private String userName;
 	private String password;
+	private Integer customerId;
 
 	public boolean valid;
 
@@ -88,15 +89,29 @@ public class User implements Serializable {
 	/**
 	 * @return the userId
 	 */
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
 	/**
 	 * @param userId the userId to set
 	 */
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
+	}
+
+	/**
+	 * @return the customerid
+	 */
+	public Integer getCustomerId() {
+		return customerId;
+	}
+
+	/**
+	 * @param customerid the customerid to set
+	 */
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
 	}
 
 	

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import asd.booking.dao.CustomerDAO;
 import asd.booking.dao.UserDAO;
+import asd.booking.dao.factory.DAOFactory;
+import asd.booking.dao.factory.UserDemoDAO;
 import asd.booking.domain.Customer;
 import asd.booking.domain.User;
 
@@ -37,7 +39,10 @@ public class LoginServlet extends HttpServlet {
 			User user = new User();
 			user.setUserName(request.getParameter("un"));
 			user.setPassword(request.getParameter("pw"));
-			user = UserDAO.login(user);
+			
+			DAOFactory daoFactory = DAOFactory.getInstance("javabase.jdbc");
+			UserDAO userDAO = daoFactory.getUserDAO();
+			userDAO.login(user);
 
 			if (user.isValid()) {
 				Customer cust = CustomerDAO.getCustomer(user.getUserId());

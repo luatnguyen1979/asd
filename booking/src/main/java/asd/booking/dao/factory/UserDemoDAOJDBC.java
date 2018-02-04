@@ -1,6 +1,7 @@
 package asd.booking.dao.factory;
 
-import static asd.booking.dao.factory.utils.DAOUtil.*;
+import static asd.booking.dao.factory.utils.DAOUtil.prepareStatement;
+import static asd.booking.dao.factory.utils.DAOUtil.toSqlDate;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

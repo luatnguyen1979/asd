@@ -2,7 +2,7 @@ package asd.booking.domain.trip;
 
 import asd.booking.domain.Train;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Route {
 
@@ -14,14 +14,14 @@ public class Route {
     private double priceOneWay;
     private double priceRoundWay;
     private Train train;
-    private LocalDate departureDate;
-    private LocalDate arrivalDate;
+    private LocalDateTime departureDate;
+    private LocalDateTime arrivalDate;
 
     public Route() {
     }
 
     public Route(int id, Port source, Port destination, double duration, double distance, double priceOneWay,
-                 double priceRoundWay, Train train, LocalDate departureDate, LocalDate arrivalDate) {
+                 double priceRoundWay, Train train, LocalDateTime departureDate,  LocalDateTime arrivalDate) {
         this.id = id;
         this.source = source;
         this.destination = destination;
@@ -98,19 +98,19 @@ public class Route {
         this.train = train;
     }
 
-    public LocalDate getDepartureDate() {
+    public LocalDateTime getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(LocalDate departureDate) {
+    public void setDepartureDate(LocalDateTime departureDate) {
         this.departureDate = departureDate;
     }
 
-    public LocalDate getArrivalDate() {
+    public LocalDateTime getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(LocalDate arrivalDate) {
+    public void setArrivalDate(LocalDateTime arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 }

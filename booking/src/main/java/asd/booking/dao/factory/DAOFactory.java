@@ -7,6 +7,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import asd.booking.dao.UserDAO;
+import asd.booking.dao.UserDAOImpl;
 import asd.booking.dao.factory.exeption.DAOConfigurationException;
 
 /**
@@ -149,7 +151,7 @@ public abstract class DAOFactory {
 	 * @throws SQLException
 	 *             If acquiring the connection fails.
 	 */
-	abstract Connection getConnection() throws SQLException;
+	public abstract Connection getConnection() throws SQLException;
 
 	// DAO implementation getters
 	// -----------------------------------------------------------------
@@ -159,7 +161,11 @@ public abstract class DAOFactory {
 	 * 
 	 * @return The User DAO associated with the current DAOFactory.
 	 */
-	public UserDemoDAO getUserDAO() {
+	public UserDAO getUserDAO() {
+		return new UserDAOImpl(this);
+	}
+	
+	public UserDemoDAO getUserDemoDAO() {
 		return new UserDemoDAOJDBC(this);
 	}
 

@@ -41,8 +41,10 @@ public class ConfirmCheckingOutServlet extends HttpServlet {
 		String tripWay = (String)session.getAttribute("tripway");
 		//TODO use prototype here.
 		for (int i = 0; i < numberPassenger; i ++) {
-			String fullName = request.getParameter("fullname" + i + 1);
-			String passengerType = request.getParameter("passengertype" + i + 1);
+			String fullNameParamName = "fullname" + (i + 1);
+			String fullName = request.getParameter(fullNameParamName);
+			String passengerTypeParamName = "passengertype" + (i + 1);
+			String passengerType = request.getParameter(passengerTypeParamName);
 			double price = Calculation.getPrice(route, passengerType, promotionCode, tripWay);
 			passengerList.add(new Passenger(fullName, passengerType, price, -1));
 		}

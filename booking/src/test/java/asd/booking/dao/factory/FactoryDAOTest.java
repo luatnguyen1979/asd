@@ -53,7 +53,7 @@ public class FactoryDAOTest {
 		System.out.println("DAOFactory successfully obtained: " + javabase);
 
 		// Obtain UserDAO.
-		UserDemoDAO userDAO = javabase.getUserDAO();
+		UserDemoDAO userDAO = javabase.getUserDemoDAO();
 		System.out.println("UserDAO successfully obtained: " + userDAO);
 
 		// Create user.

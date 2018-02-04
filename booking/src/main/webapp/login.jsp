@@ -11,7 +11,7 @@
 			<td><input type="text" name="pw" /></td>
 		</tr>
 		<tr>
-			<td colspan=2 align="right"><input type="submit" value="submit"></td>
+			<td colspan=2 align="right"><input type="submit" value="Login"></td>
 		</tr>
 	</table>
 </form>

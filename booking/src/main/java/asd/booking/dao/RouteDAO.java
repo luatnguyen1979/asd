@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +45,8 @@ public class RouteDAO {
                         rs.getDouble("pricesingleway"),
                         rs.getDouble("priceroundway"),
                         TrainDAO.get(rs.getInt("trainid")),
-                        rs.getDate("departuredate").toLocalDate(),
-                        rs.getDate("arrivaldate").toLocalDate());
+                        rs.getTimestamp("departuredate").toLocalDateTime(),
+                        rs.getTimestamp("arrivaldate").toLocalDateTime());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -77,7 +78,7 @@ public class RouteDAO {
     }
 
     public static List<Route> getRoute(int sourcePortId, int destinationPortId, String departureDate) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");
         List<Route> routeList = new ArrayList<Route>();
 
         StringBuffer searchQuery = new StringBuffer();
@@ -103,8 +104,9 @@ public class RouteDAO {
                 double priceOneWay = rs.getDouble("pricesingleway");
                 double priceRoundWay = rs.getDouble("priceroundway");
                 Train train = TrainDAO.get(rs.getInt("trainid"));
-                LocalDate rdepartureDate = rs.getDate("departuredate").toLocalDate();
-                LocalDate arrivalDate = rs.getDate("arrivaldate").toLocalDate();
+                //LocalDate rdepartureDate = rs.getDate("departuredate").toLocalDate();
+                LocalDateTime arrivalDate = rs.getTimestamp("arrivaldate").toLocalDateTime();
+                LocalDateTime rdepartureDate = rs.getTimestamp("departuredate").toLocalDateTime();
                 Route route = new Route(rId, sourcePort, desPort, duration​, distance, priceOneWay, priceRoundWay, train, rdepartureDate, arrivalDate);
                 routeList.add(route);
             }
@@ -166,8 +168,8 @@ public class RouteDAO {
                         rs.getDouble("pricesingleway"),
                         rs.getDouble("priceroundway"),
                         TrainDAO.get(rs.getInt("trainid")),
-                        rs.getDate("departuredate").toLocalDate(),
-                        rs.getDate("arrivaldate").toLocalDate());
+                        rs.getTimestamp("departuredate").toLocalDateTime(),
+                        rs.getTimestamp("arrivaldate").toLocalDateTime());
             }
         } catch (Exception e) {
             e.printStackTrace();

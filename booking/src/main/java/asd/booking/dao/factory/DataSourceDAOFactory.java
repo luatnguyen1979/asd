@@ -11,15 +11,15 @@ import javax.sql.DataSource;
  * @author luatnguyen
  *
  */
-class DataSourceDAOFactory extends DAOFactory {
+public class DataSourceDAOFactory extends DAOFactory {
 	private DataSource dataSource;
 
-	DataSourceDAOFactory(DataSource dataSource) {
+	public DataSourceDAOFactory(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 
 	@Override
-	Connection getConnection() throws SQLException {
+	public Connection getConnection() throws SQLException {
 		return dataSource.getConnection();
 	}
 }

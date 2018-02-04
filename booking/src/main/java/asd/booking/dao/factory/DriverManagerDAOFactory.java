@@ -14,7 +14,7 @@ import java.util.Vector;
  * @author luatnguyen
  *
  */
-class DriverManagerDAOFactory extends DAOFactory implements Runnable {
+public class DriverManagerDAOFactory extends DAOFactory implements Runnable {
 
 	private String url, username, password;
 	private final int maxConnections = 20;

@@ -26,7 +26,7 @@ function searchRoute() {
 			$("<td>").text("Class")).append($("<td>").text("From")).append(
 			$("<td>").text("To")).append($("<td>").text("Depart Time")).append(
 			$("<td>").text("Arrival Time")).append(
-			$("<td>").text("Price One Way/Roud Trip")).append(
+			$("<td>").text("Price One Way / Roud Trip")).append(
 			$("<td>").text("Selection"));
 	$.ajax({
 		type : 'GET',
@@ -39,24 +39,27 @@ function searchRoute() {
 		contentType : 'application/json', // Sends - Content-type
 		success : function(routes) {
 			for (var i = 0; i < routes.length; i++) {
-
+				let dhour = routes[i].departureDate.time.hour;
+				dhour = dhour > 9 ? dhour : ("0" + dhour);
+				let dminute = routes[i].departureDate.time.minute;
+				dminute = dminute > 9 ? dminute : ("0" + dminute);
+				let dsecond = routes[i].departureDate.time.second;
+				dsecond = dsecond > 9 ? dsecond : ("0" + dsecond);
+				let ahour = routes[i].arrivalDate.time.hour;
+				ahour = ahour > 9 ? ahour : ("0" + ahour);
+				let aminute = routes[i].arrivalDate.time.minute;
+				aminute = aminute > 9 ? aminute : ("0" + aminute);
+				let asecond = routes[i].arrivalDate.time.second;
+				asecond = asecond > 9 ? asecond : ("0" + asecond);
 				$("<tr>").appendTo($table).append($("<td>").text(i + 1))
 						.append($("<td>").text(routes[i].train.name)).append(
 								$("<td>").text(routes[i].train.type)).append(
 								$("<td>").text(routes[i].source.name)).append(
 								$("<td>").text(routes[i].destination.name))
 						.append(
-								$("<td>").text(
-										routes[i].departureDate.year + "-"
-												+ routes[i].departureDate.month
-												+ "-"
-												+ routes[i].departureDate.day))
+								$("<td>").text(dhour + ":" + dminute + ":" + dsecond))
 						.append(
-								$("<td>").text(
-										routes[i].arrivalDate.year + "-"
-												+ routes[i].arrivalDate.month
-												+ "-"
-												+ routes[i].arrivalDate.day))
+								$("<td>").text(ahour + ":" + aminute + ":" + asecond))
 						.append(
 								$("<td>").text(
 										routes[i].priceOneWay + "/"

@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import asd.booking.dao.factory.DAOFactory;
 import asd.booking.domain.Address;
 import asd.booking.domain.Customer;
 import asd.booking.domain.Payment;
@@ -111,7 +112,9 @@ public class CustomerDAO {
 				currentCon = null;
 			}
 		}
-		UserDAO.insert(new User(username, password), custId);
+		DAOFactory daoFactory = DAOFactory.getInstance("javabase.jdbc");
+		UserDAO userDAO = daoFactory.getUserDAO();
+		userDAO.insert(new User(username, password), custId);
 		return custId;
 	}
 	

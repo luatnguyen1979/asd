@@ -20,26 +20,26 @@ double discountRate = ((Double) session.getAttribute("discountrate")).doubleValu
 		</tr>
 		
 		<tr>
-			<td width="10%">Train</td>
-			<td width="60%">Departure Port</td>
-			<td width="30%">Arrival Port</td>
-			<td width="30%">Duration</td>
-            <td width="60%">Departure Time</td>
-            <td width="30%">Arrival Time</td>
+			<td width="15%">Train</td>
+			<td width="25%">Departure Port</td>
+			<td width="25%">Arrival Port</td>
+			<td width="5%">Duration</td>
+            <td width="15%">Departure Time</td>
+            <td width="15%">Arrival Time</td>
 		</tr>
 		</table>
 		
 	<table width="1024px" border=1>	
 	<tr>
-            <td colspan="6" class="section" align="center">Passenger Information:</td>
+            <td colspan="4" class="section" align="center">Passenger Information:</td>
 
         </tr>
         
         <tr>
-            <td width="10%">No</td>
-            <td width="60%">Passenger Name</td>
+            <td width="5%">No</td>
+            <td width="45%">Passenger Name</td>
             <td width="30%">Passenger Type</td>
-            <td width="30%">Price</td>
+            <td width="20%">Price</td>
 
         </tr>
 	
@@ -49,10 +49,10 @@ for (Passenger p: passengerList) {
 	
 %>
 <tr>
-            <td width="16%"><%=++i %></td>
-            <td width="20%"><%= p.getFullname()%></td>
-            <td width="20%"><%= p.getPassengerType()%></td>
-            <td width="20%"><%=p.getPrice() %></td>
+            <td ><%=++i %></td>
+            <td ><%= p.getFullname()%></td>
+            <td ><%= p.getPassengerType()%></td>
+            <td ><%=p.getPrice() %></td>
 
         </tr>
 <% 
