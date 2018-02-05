@@ -1,5 +1,5 @@
 <%@include file="header.jsp"%>
-<%@ page import="asd.booking.domain.Report,java.util.List,java.util.ArrayList"%>
+<%@ page import="asd.framework.booking.domain.Report,java.util.List,java.util.ArrayList"%>
 
 <%
 

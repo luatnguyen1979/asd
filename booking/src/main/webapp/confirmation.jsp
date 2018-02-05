@@ -1,5 +1,5 @@
 <%@include file="header.jsp"%>
-<%@ page import="asd.booking.domain.trip.Route,asd.booking.domain.trip.Passenger,java.util.List,java.util.ArrayList,java.time.LocalDateTime,asd.booking.utils.DateTimeUtils"%>
+<%@ page import="asd.framework.booking.domain.trip.Route,asd.framework.booking.domain.trip.Passenger,java.util.List,java.util.ArrayList,java.time.LocalDateTime,asd.booking.utils.DateTimeUtils"%>
 <%
 
 Route route = (Route) session.getAttribute("route");

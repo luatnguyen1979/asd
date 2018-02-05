@@ -1,5 +1,5 @@
 <%@include file="header.jsp"%>
-<%@ page import="asd.booking.domain.Customer"%>
+<%@ page import="asd.framework.booking.domain.Customer"%>
 
 <%
 

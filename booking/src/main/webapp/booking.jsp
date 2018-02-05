@@ -1,5 +1,5 @@
 <%@include file="header.jsp"%>
-<%@ page import="asd.booking.domain.trip.Port,java.util.List, java.util.ArrayList,asd.booking.domain.Customer"%>
+<%@ page import="asd.framework.booking.domain.trip.Port,java.util.List, java.util.ArrayList,asd.framework.booking.domain.Customer"%>
 
 <%
     List<Port> portList = (ArrayList<Port>) session.getAttribute("portList");
