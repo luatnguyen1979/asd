@@ -11,16 +11,21 @@ import javax.servlet.http.HttpSession;
 
 import asd.framework.booking.dao.proxy.ReportDaoProxy;
 import asd.framework.booking.domain.Report;
+import asd.framework.booking.logger.AbstractLogger;
+import asd.framework.booking.logger.ChainBuilderLogger;
+import asd.framework.booking.logger.LogLevel;
 
 public class ReportServlet extends HttpServlet {
 
+	private AbstractLogger logger = ChainBuilderLogger.getLogger();
     public ReportServlet() {
         super();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Report> reportList = null;
+    	logger.logMessage(LogLevel.INFO, "Starting ReportServlet");    
+    	List<Report> reportList = null;
         try {
             String startDate = "2017-01-01";
             String endDate = "2018-12-31";
@@ -43,7 +48,10 @@ public class ReportServlet extends HttpServlet {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        	logger.logMessage(LogLevel.DEBUG, e.getMessage());
             resp.sendRedirect("errorreport.jsp"); // logged-in page
+        } finally {
+        	logger.logMessage(LogLevel.INFO, "Ending ReportServlet");
         }
     }
 

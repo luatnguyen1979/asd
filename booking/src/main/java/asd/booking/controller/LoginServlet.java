@@ -15,6 +15,9 @@ import asd.framework.booking.dao.factory.DAOFactory;
 import asd.framework.booking.dao.factory.UserDemoDAO;
 import asd.framework.booking.domain.Customer;
 import asd.framework.booking.domain.User;
+import asd.framework.booking.logger.AbstractLogger;
+import asd.framework.booking.logger.ChainBuilderLogger;
+import asd.framework.booking.logger.LogLevel;
 
 /**
  * @author luatnguyen
@@ -25,6 +28,7 @@ import asd.framework.booking.domain.User;
  * Servlet implementation class LoginServlet
  */
 public class LoginServlet extends HttpServlet {
+	private AbstractLogger logger = ChainBuilderLogger.getLogger();
 
 	/**
 	 * 
@@ -33,7 +37,8 @@ public class LoginServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, java.io.IOException {
-
+		
+		logger.logMessage(LogLevel.INFO, "Starting LoginServlet");
 		try {
 
 			User user = new User();
@@ -50,9 +55,7 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("currentSessionUser", user);
 				session.setAttribute("currentSessionCustomer", cust);
 				session.setAttribute("isLogged", "true");
-
 				response.sendRedirect("userlogged.jsp"); // logged-in page
-
 			}
 
 			else
@@ -61,7 +64,9 @@ public class LoginServlet extends HttpServlet {
 
 		catch (Throwable theException) {
 			theException.printStackTrace();
-			System.out.println(theException);
+			logger.logMessage(LogLevel.INFO, theException.getMessage());
+		} finally {
+			logger.logMessage(LogLevel.INFO, "Ending LoginServlet");
 		}
 	}
 }

@@ -7,11 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import asd.framework.booking.logger.AbstractLogger;
+import asd.framework.booking.logger.ChainBuilderLogger;
+import asd.framework.booking.logger.LogLevel;
+
 /**
  * Servlet implementation class LogoutServlet
  */
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private AbstractLogger logger = ChainBuilderLogger.getLogger();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -27,6 +32,7 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		logger.logMessage(LogLevel.INFO, "Starting LogoutServlet");
 		HttpSession session = request.getSession(true);
 
 		session.setAttribute("discountrate", null);
@@ -41,6 +47,7 @@ public class LogoutServlet extends HttpServlet {
 
 		response.sendRedirect("login.jsp");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		logger.logMessage(LogLevel.INFO, "Ending LogoutServlet");
 	}
 
 	/**

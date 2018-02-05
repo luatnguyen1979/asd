@@ -29,6 +29,9 @@ import asd.framework.booking.domain.User;
 import asd.framework.booking.domain.trip.Passenger;
 import asd.framework.booking.domain.trip.Route;
 import asd.framework.booking.domain.trip.Trip;
+import asd.framework.booking.logger.AbstractLogger;
+import asd.framework.booking.logger.ChainBuilderLogger;
+import asd.framework.booking.logger.LogLevel;
 import asd.framework.booking.mail.pattern.ConfirmationEmail;
 import asd.framework.booking.mail.pattern.SendEmailContext;
 
@@ -38,6 +41,7 @@ import asd.framework.booking.mail.pattern.SendEmailContext;
 public class PlaceOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
+	private AbstractLogger logger = ChainBuilderLogger.getLogger();
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -52,6 +56,7 @@ public class PlaceOrderServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		logger.logMessage(LogLevel.INFO, "Starting PlaceOrderServlet");
 		HttpSession session = request.getSession(true);
 		User user = (User) session.getAttribute("currentSessionUser");
 		Customer cust = (Customer) session.getAttribute("currentSessionCustomer");
@@ -105,6 +110,7 @@ public class PlaceOrderServlet extends HttpServlet {
 
 		response.sendRedirect("placeordersuccess.jsp");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		logger.logMessage(LogLevel.INFO, "Ending PlaceOrderServlet");
 	}
 
 	/**

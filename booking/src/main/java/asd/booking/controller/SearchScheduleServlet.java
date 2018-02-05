@@ -16,13 +16,17 @@ import asd.framework.booking.dao.TrainDAO;
 import asd.framework.booking.dao.factory.DAOFactory;
 import asd.framework.booking.domain.Train;
 import asd.framework.booking.domain.trip.Route;
+import asd.framework.booking.logger.AbstractLogger;
+import asd.framework.booking.logger.ChainBuilderLogger;
+import asd.framework.booking.logger.LogLevel;
 
 /**
  * Servlet implementation class SearchSchedule
  */
 public class SearchScheduleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
+	private AbstractLogger logger = ChainBuilderLogger.getLogger();
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -37,6 +41,7 @@ public class SearchScheduleServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		logger.logMessage(LogLevel.INFO, "Starting SearchScheduleServlet");
 		try {
 
 			String tripWay = request.getParameter("trip");
@@ -85,7 +90,9 @@ public class SearchScheduleServlet extends HttpServlet {
 		}
 
 		catch (Throwable theException) {
-			System.out.println(theException);
+			logger.logMessage(LogLevel.DEBUG, theException.getMessage());
+		} finally {
+			logger.logMessage(LogLevel.INFO, "Ending SearchScheduleServlet");
 		}
 
 	}

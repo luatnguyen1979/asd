@@ -17,6 +17,9 @@ import asd.framework.booking.domain.Address;
 import asd.framework.booking.domain.Customer;
 import asd.framework.booking.domain.Payment;
 import asd.framework.booking.domain.User;
+import asd.framework.booking.logger.AbstractLogger;
+import asd.framework.booking.logger.ChainBuilderLogger;
+import asd.framework.booking.logger.LogLevel;
 import asd.framework.booking.mail.pattern.SendEmailContext;
 import asd.framework.booking.mail.pattern.WelcomeEmail;
 
@@ -32,6 +35,8 @@ public class RegisterCustomerServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	private AbstractLogger logger = ChainBuilderLogger.getLogger();
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -46,6 +51,7 @@ public class RegisterCustomerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		logger.logMessage(LogLevel.INFO, "Starting RegisterCustomerServlet");
 		try {
 
 			String username = request.getParameter("username");
@@ -121,7 +127,9 @@ public class RegisterCustomerServlet extends HttpServlet {
 
 		catch (Throwable theException) {
 			System.out.println(theException);
+			logger.logMessage(LogLevel.DEBUG, theException.getMessage());
 		}
+		logger.logMessage(LogLevel.INFO, "Ending RegisterCustomerServlet");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
