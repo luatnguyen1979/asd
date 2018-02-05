@@ -1,21 +1,22 @@
 package asd.framework.booking.discount;
 
-import java.util.List;
-
 import asd.framework.booking.discount.calculation.ICalculation;
+import asd.framework.booking.iteration.Iterator;
+import asd.framework.booking.iteration.QueueIteration;
 
 public class GroupDiscount {
 
-    private List<IDiscountElement> passengerList;
+    private QueueIteration<IDiscountElement> passengerList;
 
-    public GroupDiscount(List<IDiscountElement> passengerList) {
+    public GroupDiscount(QueueIteration<IDiscountElement> passengerList) {
         this.passengerList = passengerList;
     }
 
     public double getDiscount(int minMember, ICalculation calculation, double regularPrice) {
         GroupVisitor visitor = new GroupVisitor(minMember, calculation, regularPrice);
-        for (IDiscountElement passenger : passengerList) {
-            passenger.accept(visitor);
+        Iterator<IDiscountElement> iterator = passengerList.getIterator();
+        while (iterator.hasNext()) {
+            iterator.next().accept(visitor);
         }
         return visitor.getDiscount();
     }

@@ -9,10 +9,11 @@ import asd.framework.booking.discount.passenger.*;
 import asd.framework.booking.domain.trip.Passenger;
 import asd.framework.booking.domain.trip.Route;
 import asd.framework.booking.domain.trip.Trip;
+import asd.framework.booking.iteration.ArrayIteration;
+import asd.framework.booking.iteration.Iterator;
+import asd.framework.booking.iteration.QueueIteration;
 
 import java.time.LocalDate;
-import java.util.LinkedList;
-import java.util.List;
 
 public class DiscountFacadeImpl implements IDiscountFacade {
 
@@ -37,7 +38,7 @@ public class DiscountFacadeImpl implements IDiscountFacade {
         ICalculation seniorICalculation = new CalculationByPercentage(startDate, endDate, seniorPercent);
         ICalculation militaryCalculation = new CalculationByPercentage(startDate, endDate, militaryPercent);
         ICalculation groupCalculation = new CalculationByAmount(startDate, endDate, seniorPercent);
-        List<IDiscountElement> elementList = new LinkedList<>();
+        QueueIteration<IDiscountElement> elementList = new QueueIteration<>();
         for (Passenger passenger : trip.getPassengerList()) {
             switch (passenger.getPassengerType()) {
                 case PassengerType.ADULT:

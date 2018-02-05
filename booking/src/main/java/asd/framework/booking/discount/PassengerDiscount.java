@@ -1,14 +1,14 @@
 package asd.framework.booking.discount;
 
-import java.util.List;
-
 import asd.framework.booking.discount.calculation.ICalculation;
+import asd.framework.booking.iteration.Iterator;
+import asd.framework.booking.iteration.QueueIteration;
 
 public class PassengerDiscount {
 
-    private List<IDiscountElement> passengerList;
+    private QueueIteration<IDiscountElement> passengerList;
 
-    public PassengerDiscount(List<IDiscountElement> passengerList) {
+    public PassengerDiscount(QueueIteration<IDiscountElement> passengerList) {
         this.passengerList = passengerList;
     }
 
@@ -17,8 +17,9 @@ public class PassengerDiscount {
                               ICalculation militaryCalculation) {
         PassengerVisitor visitor = new PassengerVisitor(regularPrice, adultCalculation,
                 childCalculation, seniorCalculation, infantCalculation, militaryCalculation);
-        for (IDiscountElement passenger : passengerList) {
-            passenger.accept(visitor);
+        Iterator<IDiscountElement> iterator = passengerList.getIterator();
+        while (iterator.hasNext()) {
+            iterator.next().accept(visitor);
         }
         return visitor.getDiscount();
     }
