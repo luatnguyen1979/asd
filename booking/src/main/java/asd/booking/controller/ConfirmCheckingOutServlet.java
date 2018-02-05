@@ -15,6 +15,9 @@ import asd.framework.booking.discount.DiscountFacadeImpl;
 import asd.framework.booking.discount.IDiscountFacade;
 import asd.framework.booking.domain.trip.Passenger;
 import asd.framework.booking.domain.trip.Route;
+import asd.framework.booking.logger.AbstractLogger;
+import asd.framework.booking.logger.ChainBuilderLogger;
+import asd.framework.booking.logger.LogLevel;
 
 /**
  * Servlet implementation class ConfirmCheckingOutServlet
@@ -22,6 +25,7 @@ import asd.framework.booking.domain.trip.Route;
 public class ConfirmCheckingOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	private AbstractLogger logger = ChainBuilderLogger.getLogger();
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -36,6 +40,7 @@ public class ConfirmCheckingOutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		logger.logMessage(LogLevel.INFO, "Starting ConfirmCheckingOutServlet");
 		HttpSession session = request.getSession(true);
 		List<Passenger> passengerList = new ArrayList<Passenger>();
 		Route route = (Route) session.getAttribute("route");
@@ -61,6 +66,7 @@ public class ConfirmCheckingOutServlet extends HttpServlet {
 		response.sendRedirect("confirmation.jsp");
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		logger.logMessage(LogLevel.INFO, "Ending ConfirmCheckingOutServlet");
 	}
 
 	/**

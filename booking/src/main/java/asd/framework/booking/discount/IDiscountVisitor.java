@@ -1,7 +1,5 @@
 package asd.framework.booking.discount;
 
-import asd.framework.booking.discount.passenger.*;
-
 public interface IDiscountVisitor {
 
     public void visit(ElementAdult elementAdult);

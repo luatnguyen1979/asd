@@ -5,12 +5,9 @@ import asd.framework.booking.dao.PromotionDAO;
 import asd.framework.booking.discount.calculation.CalculationByAmount;
 import asd.framework.booking.discount.calculation.CalculationByPercentage;
 import asd.framework.booking.discount.calculation.ICalculation;
-import asd.framework.booking.discount.passenger.*;
 import asd.framework.booking.domain.trip.Passenger;
 import asd.framework.booking.domain.trip.Route;
 import asd.framework.booking.domain.trip.Trip;
-import asd.framework.booking.iteration.ArrayIteration;
-import asd.framework.booking.iteration.Iterator;
 import asd.framework.booking.iteration.QueueIteration;
 
 import java.time.LocalDate;

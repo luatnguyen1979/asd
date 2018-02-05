@@ -13,6 +13,9 @@ import asd.framework.booking.dao.UserDAO;
 import asd.framework.booking.dao.factory.DAOFactory;
 import asd.framework.booking.domain.Train;
 import asd.framework.booking.domain.trip.Route;
+import asd.framework.booking.logger.AbstractLogger;
+import asd.framework.booking.logger.ChainBuilderLogger;
+import asd.framework.booking.logger.LogLevel;
 
 /**
  * Servlet implementation class ContinuingBookingServlet
@@ -20,6 +23,7 @@ import asd.framework.booking.domain.trip.Route;
 public class ContinuingBookingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	private AbstractLogger logger = ChainBuilderLogger.getLogger();
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -34,6 +38,7 @@ public class ContinuingBookingServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		logger.logMessage(LogLevel.INFO, "Starting ConfirmCheckingOutServlet");
 		String strId = request.getParameter("selection");
 		int routeId = -1;
 		try {
@@ -52,10 +57,12 @@ public class ContinuingBookingServlet extends HttpServlet {
 			response.sendRedirect("passengerlist.jsp");
 
 		} catch (NumberFormatException nfe) {
+			logger.logMessage(LogLevel.DEBUG, nfe.getMessage());
 			response.sendRedirect("error.jsp");
 		}
-
+		logger.logMessage(LogLevel.INFO, "Starting ConfirmCheckingOutServlet");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	/**

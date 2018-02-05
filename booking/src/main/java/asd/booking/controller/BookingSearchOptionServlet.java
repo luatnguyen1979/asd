@@ -12,12 +12,16 @@ import javax.servlet.http.HttpSession;
 import asd.framework.booking.dao.PortDAO;
 import asd.framework.booking.dao.factory.DAOFactory;
 import asd.framework.booking.domain.trip.Port;
+import asd.framework.booking.logger.AbstractLogger;
+import asd.framework.booking.logger.ChainBuilderLogger;
+import asd.framework.booking.logger.LogLevel;
 
 /**
  * Servlet implementation class DisplayOptionSearch
  */
 public class BookingSearchOptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private AbstractLogger logger = ChainBuilderLogger.getLogger();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -33,6 +37,7 @@ public class BookingSearchOptionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		logger.logMessage(LogLevel.INFO, "Starting BookingSearchOptionServlet");
 		try {
 			System.out.println("test");
 			DAOFactory daoFactory = DAOFactory.getInstance("javabase.jdbc");
@@ -51,7 +56,10 @@ public class BookingSearchOptionServlet extends HttpServlet {
 		}
 
 		catch (Throwable theException) {
-			System.out.println(theException);
+			logger.logMessage(LogLevel.DEBUG, theException.toString());
+		}
+		finally {
+			logger.logMessage(LogLevel.INFO, "Ending BookingSearchOptionServlet");
 		}
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 

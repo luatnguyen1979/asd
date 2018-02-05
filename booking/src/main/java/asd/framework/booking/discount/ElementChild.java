@@ -1,9 +1,9 @@
-package asd.framework.booking.discount.passenger;
+package asd.framework.booking.discount;
 
 import asd.framework.booking.discount.IDiscountElement;
 import asd.framework.booking.discount.IDiscountVisitor;
 
-public class ElementInfant implements IDiscountElement {
+public class ElementChild implements IDiscountElement {
 
     @Override
     public void accept(IDiscountVisitor iDiscountVisitor) {
