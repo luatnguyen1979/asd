@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import asd.booking.dao.RouteDAO;
-import asd.booking.dao.TrainDAO;
-import asd.booking.dao.UserDAO;
-import asd.booking.dao.factory.DAOFactory;
-import asd.booking.domain.Train;
-import asd.booking.domain.trip.Route;
+import asd.framework.booking.dao.RouteDAO;
+import asd.framework.booking.dao.TrainDAO;
+import asd.framework.booking.dao.UserDAO;
+import asd.framework.booking.dao.factory.DAOFactory;
+import asd.framework.booking.domain.Train;
+import asd.framework.booking.domain.trip.Route;
 
 /**
  * Servlet implementation class ContinuingBookingServlet

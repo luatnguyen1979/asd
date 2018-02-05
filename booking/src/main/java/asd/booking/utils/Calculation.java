@@ -2,9 +2,9 @@ package asd.booking.utils;
 
 import java.util.List;
 
-import asd.booking.dao.PromotionDAO;
-import asd.booking.domain.trip.Passenger;
-import asd.booking.domain.trip.Route;
+import asd.framework.booking.dao.PromotionDAO;
+import asd.framework.booking.domain.trip.Passenger;
+import asd.framework.booking.domain.trip.Route;
 
 public class Calculation {
 

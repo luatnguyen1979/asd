@@ -3,9 +3,9 @@ package asd.booking.dao.factory;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import asd.booking.dao.factory.DAOFactory;
-import asd.booking.dao.factory.UserDemoDAO;
-import asd.booking.domain.UserDemo;
+import asd.framework.booking.dao.factory.DAOFactory;
+import asd.framework.booking.dao.factory.UserDemoDAO;
+import asd.framework.booking.domain.UserDemo;
 
 /**
  * Test harness for the com.example.dao package. This require the following

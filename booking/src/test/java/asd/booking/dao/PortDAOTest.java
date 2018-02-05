@@ -1,7 +1,8 @@
 package asd.booking.dao;
 
-import asd.booking.dao.factory.DAOFactory;
-import asd.booking.domain.trip.Port;
+import asd.framework.booking.dao.PortDAO;
+import asd.framework.booking.dao.factory.DAOFactory;
+import asd.framework.booking.domain.trip.Port;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 

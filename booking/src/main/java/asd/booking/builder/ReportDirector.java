@@ -1,8 +1,8 @@
 package asd.booking.builder;
 
-import asd.booking.domain.Report;
-import asd.booking.domain.trip.Route;
-import asd.booking.domain.trip.Trip;
+import asd.framework.booking.domain.Report;
+import asd.framework.booking.domain.trip.Route;
+import asd.framework.booking.domain.trip.Trip;
 
 import java.util.LinkedList;
 import java.util.List;

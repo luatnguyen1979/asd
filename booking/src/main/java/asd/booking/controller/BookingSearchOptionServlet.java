@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import asd.booking.dao.PortDAO;
-import asd.booking.dao.factory.DAOFactory;
-import asd.booking.domain.trip.Port;
+import asd.framework.booking.dao.PortDAO;
+import asd.framework.booking.dao.factory.DAOFactory;
+import asd.framework.booking.domain.trip.Port;
 
 /**
  * Servlet implementation class DisplayOptionSearch

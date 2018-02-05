@@ -1,7 +1,7 @@
 package asd.booking.builder;
 
-import asd.booking.domain.Report;
-import asd.booking.domain.trip.Trip;
+import asd.framework.booking.domain.Report;
+import asd.framework.booking.domain.trip.Trip;
 
 public class TripReportBuilder implements ReportBuilder<Trip> {
 

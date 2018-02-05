@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import asd.booking.dao.CustomerDAO;
-import asd.booking.dao.UserDAO;
-import asd.booking.dao.factory.DAOFactory;
-import asd.booking.dao.factory.UserDemoDAO;
-import asd.booking.domain.Customer;
-import asd.booking.domain.User;
+import asd.framework.booking.dao.CustomerDAO;
+import asd.framework.booking.dao.UserDAO;
+import asd.framework.booking.dao.factory.DAOFactory;
+import asd.framework.booking.dao.factory.UserDemoDAO;
+import asd.framework.booking.domain.Customer;
+import asd.framework.booking.domain.User;
 
 /**
  * @author luatnguyen

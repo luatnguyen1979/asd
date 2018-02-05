@@ -8,17 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import asd.booking.controller.observer.EmailObserver;
-import asd.booking.controller.observer.SendingEmailObserver;
-import asd.booking.controller.observer.SubjectOberserver;
-import asd.booking.dao.CustomerDAO;
-import asd.booking.domain.Address;
-import asd.booking.domain.Customer;
-import asd.booking.domain.Payment;
-import asd.booking.domain.User;
-import asd.booking.mail.pattern.SendEmailContext;
-import asd.booking.mail.pattern.WelcomeEmail;
 import asd.booking.utils.Utils;
+import asd.framework.booking.controller.observer.EmailObserver;
+import asd.framework.booking.controller.observer.SendingEmailObserver;
+import asd.framework.booking.controller.observer.SubjectOberserver;
+import asd.framework.booking.dao.CustomerDAO;
+import asd.framework.booking.domain.Address;
+import asd.framework.booking.domain.Customer;
+import asd.framework.booking.domain.Payment;
+import asd.framework.booking.domain.User;
+import asd.framework.booking.mail.pattern.SendEmailContext;
+import asd.framework.booking.mail.pattern.WelcomeEmail;
 
 /**
  * @author luatnguyen

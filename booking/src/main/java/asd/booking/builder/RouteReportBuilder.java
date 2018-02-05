@@ -1,11 +1,11 @@
 package asd.booking.builder;
 
-import asd.booking.dao.PortDAO;
-import asd.booking.dao.UserDAO;
-import asd.booking.dao.factory.DAOFactory;
-import asd.booking.domain.Report;
-import asd.booking.domain.trip.Route;
 import asd.booking.utils.DateTimeUtils;
+import asd.framework.booking.dao.PortDAO;
+import asd.framework.booking.dao.UserDAO;
+import asd.framework.booking.dao.factory.DAOFactory;
+import asd.framework.booking.domain.Report;
+import asd.framework.booking.domain.trip.Route;
 
 public class RouteReportBuilder implements ReportBuilder<Route> {
 

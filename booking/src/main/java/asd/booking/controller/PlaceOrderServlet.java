@@ -12,25 +12,25 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import asd.booking.builder.ReportDirector;
-import asd.booking.controller.observer.EmailObserver;
-import asd.booking.controller.observer.SendingEmailObserver;
-import asd.booking.controller.observer.SubjectOberserver;
-import asd.booking.dao.PassengerDAO;
-import asd.booking.dao.ReportDAO;
-import asd.booking.dao.TripDAO;
-import asd.booking.dao.factory.DAOFactory;
-import asd.booking.discount.DiscountFacadeImpl;
-import asd.booking.discount.IDiscountFacade;
-import asd.booking.domain.Customer;
-import asd.booking.domain.Report;
-import asd.booking.domain.User;
-import asd.booking.domain.trip.Passenger;
-import asd.booking.domain.trip.Route;
-import asd.booking.domain.trip.Trip;
-import asd.booking.mail.pattern.ConfirmationEmail;
-import asd.booking.mail.pattern.SendEmailContext;
 import asd.booking.utils.DateTimeUtils;
 import asd.booking.utils.UniqueStringGenerator;
+import asd.framework.booking.controller.observer.EmailObserver;
+import asd.framework.booking.controller.observer.SendingEmailObserver;
+import asd.framework.booking.controller.observer.SubjectOberserver;
+import asd.framework.booking.dao.PassengerDAO;
+import asd.framework.booking.dao.ReportDAO;
+import asd.framework.booking.dao.TripDAO;
+import asd.framework.booking.dao.factory.DAOFactory;
+import asd.framework.booking.discount.DiscountFacadeImpl;
+import asd.framework.booking.discount.IDiscountFacade;
+import asd.framework.booking.domain.Customer;
+import asd.framework.booking.domain.Report;
+import asd.framework.booking.domain.User;
+import asd.framework.booking.domain.trip.Passenger;
+import asd.framework.booking.domain.trip.Route;
+import asd.framework.booking.domain.trip.Trip;
+import asd.framework.booking.mail.pattern.ConfirmationEmail;
+import asd.framework.booking.mail.pattern.SendEmailContext;
 
 /**
  * Servlet implementation class PlaceOrder

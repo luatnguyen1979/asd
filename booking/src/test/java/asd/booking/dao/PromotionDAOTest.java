@@ -1,5 +1,6 @@
 package asd.booking.dao;
 
+import asd.framework.booking.dao.PromotionDAO;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 

@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import asd.booking.discount.DiscountFacadeImpl;
-import asd.booking.discount.IDiscountFacade;
-import asd.booking.domain.trip.Passenger;
-import asd.booking.domain.trip.Route;
 import asd.booking.utils.Calculation;
+import asd.framework.booking.discount.DiscountFacadeImpl;
+import asd.framework.booking.discount.IDiscountFacade;
+import asd.framework.booking.domain.trip.Passenger;
+import asd.framework.booking.domain.trip.Route;
 
 /**
  * Servlet implementation class ConfirmCheckingOutServlet

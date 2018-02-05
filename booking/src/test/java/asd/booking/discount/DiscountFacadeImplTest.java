@@ -1,14 +1,15 @@
 package asd.booking.discount;
 
-import asd.booking.dao.PassengerDAO;
-import asd.booking.dao.PassengerDAOImpl;
-import asd.booking.dao.RouteDAO;
-import asd.booking.dao.TripDAO;
-import asd.booking.dao.factory.DAOFactory;
-import asd.booking.domain.trip.Route;
-import asd.booking.domain.trip.Trip;
 import asd.booking.utils.PassengerType;
 import asd.booking.utils.TripType;
+import asd.framework.booking.dao.PassengerDAO;
+import asd.framework.booking.dao.RouteDAO;
+import asd.framework.booking.dao.TripDAO;
+import asd.framework.booking.dao.factory.DAOFactory;
+import asd.framework.booking.dao.factory.impl.PassengerDAOImpl;
+import asd.framework.booking.discount.DiscountFacadeImpl;
+import asd.framework.booking.domain.trip.Route;
+import asd.framework.booking.domain.trip.Trip;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 

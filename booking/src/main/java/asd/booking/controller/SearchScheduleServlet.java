@@ -11,11 +11,11 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-import asd.booking.dao.RouteDAO;
-import asd.booking.dao.TrainDAO;
-import asd.booking.dao.factory.DAOFactory;
-import asd.booking.domain.Train;
-import asd.booking.domain.trip.Route;
+import asd.framework.booking.dao.RouteDAO;
+import asd.framework.booking.dao.TrainDAO;
+import asd.framework.booking.dao.factory.DAOFactory;
+import asd.framework.booking.domain.Train;
+import asd.framework.booking.domain.trip.Route;
 
 /**
  * Servlet implementation class SearchSchedule

@@ -1,12 +1,13 @@
 package asd.booking.dao.factory;
 
-import asd.booking.dao.TripDAO;
-import asd.booking.domain.Customer;
-import asd.booking.domain.trip.Passenger;
-import asd.booking.domain.trip.Route;
-import asd.booking.domain.trip.Trip;
 import asd.booking.utils.PassengerType;
 import asd.booking.utils.UniqueStringGenerator;
+import asd.framework.booking.dao.TripDAO;
+import asd.framework.booking.dao.factory.DAOFactory;
+import asd.framework.booking.domain.Customer;
+import asd.framework.booking.domain.trip.Passenger;
+import asd.framework.booking.domain.trip.Route;
+import asd.framework.booking.domain.trip.Trip;
 import junit.framework.TestCase;
 
 import java.util.LinkedList;

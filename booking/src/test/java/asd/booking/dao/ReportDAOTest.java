@@ -1,10 +1,11 @@
 package asd.booking.dao;
 
-import asd.booking.domain.Report;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import java.util.List;
+
+import asd.framework.booking.domain.Report;
 
 public class ReportDAOTest extends TestCase {
 

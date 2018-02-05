@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import asd.booking.dao.proxy.ReportDaoProxy;
-import asd.booking.domain.Report;
+import asd.framework.booking.dao.proxy.ReportDaoProxy;
+import asd.framework.booking.domain.Report;
 
 public class ReportServlet extends HttpServlet {
 

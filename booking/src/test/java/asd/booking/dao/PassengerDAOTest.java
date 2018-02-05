@@ -2,9 +2,10 @@ package asd.booking.dao;
 
 import java.util.List;
 
-import asd.booking.dao.factory.DAOFactory;
-import asd.booking.domain.trip.Passenger;
 import asd.booking.utils.PassengerType;
+import asd.framework.booking.dao.PassengerDAO;
+import asd.framework.booking.dao.factory.DAOFactory;
+import asd.framework.booking.domain.trip.Passenger;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
