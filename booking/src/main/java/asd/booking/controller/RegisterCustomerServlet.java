@@ -112,11 +112,11 @@ public class RegisterCustomerServlet extends HttpServlet {
 				HttpSession session = request.getSession(true);
 				session.setAttribute("currentSessionUser", user);
 				session.setAttribute("currentSessionCustomer", cust);
-				response.sendRedirect("userLogged.jsp"); // logged-in page
+				response.sendRedirect("userlogged.jsp"); // logged-in page
 			}
 
 			else
-				response.sendRedirect("invalidLogin.jsp"); // error page
+				response.sendRedirect("invalidlogin.jsp"); // error page
 		}
 
 		catch (Throwable theException) {

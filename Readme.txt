@@ -3,6 +3,7 @@
 2) https://github.com/luatnguyen1979/asd/tree/bookingframework/dist
 - booking.war
 - myconfig.properties
+- booking.sql
 
 3) Modify the myconfig.properties as following:
 	- javabase.jdbc.url=jdbc:mysql://localhost:3306/booking?useSSL=false
@@ -14,7 +15,7 @@
 	* password is root. (based on your user's password)
 4) copy "myconfig.properties" to ...Tomcat/conf folder
 
-5) run the script "booking.sql" in MySQL
+5) run the script "booking.sql" in MySQL to import data and structure
 
 6) Deploy the booking.war to tomcat server.
 

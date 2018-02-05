@@ -22,7 +22,7 @@ import asd.framework.booking.domain.User;
 public class UserDAOImpl implements UserDAO {
 	private DAOFactory daoFactory;
 	//private static final String SQL_INSERT = "INSERT INTO DemoUser (email, password, firstname, lastname, birthdate) VALUES (?, MD5(?), ?)";
-	private static final String SQL_INSERT = "INSERT INTO User (email, password, firstname, lastname, birthdate) VALUES (?, ?, ?)";
+	private static final String SQL_INSERT = "INSERT INTO User (username, password, customerid) VALUES (?, ?, ?)";
 	private static final String SQL_FIND_BY_USER_AND_PASSWORD = "SELECT userid, username, password, customerid FROM user WHERE username = ? AND password = ?";
 	// Constructors
 	// -------------------------------------------------------------------------------
