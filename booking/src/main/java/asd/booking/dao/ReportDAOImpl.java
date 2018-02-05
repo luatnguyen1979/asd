@@ -14,16 +14,14 @@ import java.util.List;
 
 import asd.booking.dao.factory.DAOFactory;
 import asd.booking.dao.factory.exeption.DAOException;
+import asd.booking.dao.proxy.IReportProxy;
 import asd.booking.domain.Report;
-import asd.booking.domain.trip.Port;
-import asd.booking.domain.trip.Route;
-import asd.booking.domain.trip.Trip;
 
 /**
  * @author luatnguyen
  *
  */
-public class ReportDAOImpl implements ReportDAO {
+public class ReportDAOImpl implements ReportDAO,IReportProxy {
 	private DAOFactory daoFactory;
 	private static final String SQL_INSERT = "INSERT INTO report (date, passenger, sourceport, destport, totalprice, trainname) VALUES (?, ?, ?, ?, ?, ?)";
 	static final String SQL_FIND_BY_DATE = "SELECT * FROM report";
