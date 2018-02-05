@@ -43,7 +43,6 @@
    89 ./tripdetail.jsp
    21 ./userlogged.jsp
   625 total
-
 3. Framework java source code - 72% of total source code
     31 ./framework/booking/controller/observer/EmailObserver.java
     15 ./framework/booking/controller/observer/SendingEmailObserver.java

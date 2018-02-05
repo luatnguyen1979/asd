@@ -1,7 +1,6 @@
 package asd.framework.booking.discount;
 
 import asd.framework.booking.discount.calculation.ICalculation;
-import asd.framework.booking.discount.passenger.*;
 
 public class PassengerVisitor implements IDiscountVisitor {
 
