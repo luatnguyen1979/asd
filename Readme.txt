@@ -1,3 +1,5 @@
+----------------How to make the application work --------------------------
+
 1) check out the project from : https://github.com/luatnguyen1979/asd/tree/bookingframework
 
 2) https://github.com/luatnguyen1979/asd/tree/bookingframework/dist
@@ -26,6 +28,18 @@
 - kimtey/123
 - enkh/123
  
-	
+------------------------each person role and responsibility-------------------------------------
 
-	
+Luat Nguyen (986048): 
+	- Team leader
+	- responsible for all the UI
+	- apply patterns : Abstract Factory, Flyweight, and Chain of Responsibility.
+
+Kimtey Chav (986008) :
+	- responsible for mail sending 
+	- apply patterns : Proxy, Singleton, Strategy, Observer, and Template Methods
+
+Enkh Erdenebat (986047):
+	- Responsible for generating the report and calculate price
+	- apply patterns: Prototype, Builder, Iterator, Visitor, and Facade. 
+ 
