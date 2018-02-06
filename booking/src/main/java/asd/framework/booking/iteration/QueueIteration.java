@@ -93,7 +93,7 @@ public class QueueIteration<T> implements Aggregate {
         public T next() {
             if (hasNext()) {
                 T ret = frontNode.element;
-                frontNode = front.nextNode;
+                frontNode = frontNode.nextNode;
                 return ret;
             } else {
                 return null;
