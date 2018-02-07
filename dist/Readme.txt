@@ -1,8 +1,8 @@
 ----------------How to make the application work --------------------------
 
-1) check out the project from : https://github.com/luatnguyen1979/asd/tree/bookingframework
+1) check out the project from : https://github.com/luatnguyen1979/asd/tree/bookingframework or get from drop box directly.
 
-2) https://github.com/luatnguyen1979/asd/tree/bookingframework/dist
+2) https://github.com/luatnguyen1979/asd/tree/bookingframework/dist or from drop box
 - booking.war
 - myconfig.properties
 - booking.sql
